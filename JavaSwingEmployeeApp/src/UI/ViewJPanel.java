@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
-
+import javax.swing.table.DefaultTableModel;
+import model.EmployeeHistory;
+import model.Employees;
 /**
  *
  * @author snehal
@@ -13,8 +15,14 @@ public class ViewJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ViewJPanel
      */
-    public ViewJPanel() {
+    EmployeeHistory history;
+    public ViewJPanel(EmployeeHistory history) {
         initComponents();
+        this.history = history;
+        
+        
+        populateTable();
+        
     }
 
     /**
@@ -26,19 +34,82 @@ public class ViewJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblEmployee = new javax.swing.JTable();
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("View Employees");
+
+        tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Name", "Employee ID", "Age", "Gender", "Start Date", "Level", "Team Info", "Position Title", "Cell Phone Number", "Email Address"
+            }
+        ));
+        jScrollPane1.setViewportView(tblEmployee);
+        if (tblEmployee.getColumnModel().getColumnCount() > 0) {
+            tblEmployee.getColumnModel().getColumn(0).setPreferredWidth(35);
+            tblEmployee.getColumnModel().getColumn(2).setPreferredWidth(25);
+            tblEmployee.getColumnModel().getColumn(3).setPreferredWidth(35);
+            tblEmployee.getColumnModel().getColumn(4).setPreferredWidth(60);
+            tblEmployee.getColumnModel().getColumn(5).setPreferredWidth(35);
+            tblEmployee.getColumnModel().getColumn(6).setPreferredWidth(60);
+        }
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(191, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblEmployee;
     // End of variables declaration//GEN-END:variables
+    private void populateTable()
+    {
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        model.setRowCount(0);
+        for(Employees e : history.getHistory()){
+            Object[] row = new Object[10];
+            row[0] = e.getName();
+            row[1] = e.getEmployeeId();
+            row[2] = e.getAge();
+            row[3] = e.getGender();
+            row[4] = e.getStartDate();
+            row[5] = e.getLevel();
+            row[6] = e.getTeamInfo();
+            row[7] = e.getPositionTitle();
+            row[8] = e.getPhonenumber();
+            row[9] = e.getEmailId();
+            
+            model.addRow(row);
+        }
+    }
 }
