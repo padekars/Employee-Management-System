@@ -3,26 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
-import javax.swing.table.DefaultTableModel;
-import model.EmployeeHistory;
-import model.Employees;
+
 /**
  *
  * @author snehal
  */
-public class ViewJPanel extends javax.swing.JPanel {
+public class DeleteJPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewJPanel
+     * Creates new form DeleteJPanel
      */
-    EmployeeHistory history;
-    public ViewJPanel(EmployeeHistory history) {
+    public DeleteJPanel() {
         initComponents();
-        this.history = history;
-        
-        
-        populateTable();
-        
     }
 
     /**
@@ -37,10 +29,11 @@ public class ViewJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEmployee = new javax.swing.JTable();
+        btnDelete = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("View Employees");
+        jLabel1.setText("Delete Employee");
 
         tblEmployee.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -54,62 +47,48 @@ public class ViewJPanel extends javax.swing.JPanel {
             }
         ));
         jScrollPane1.setViewportView(tblEmployee);
-        if (tblEmployee.getColumnModel().getColumnCount() > 0) {
-            tblEmployee.getColumnModel().getColumn(0).setPreferredWidth(35);
-            tblEmployee.getColumnModel().getColumn(2).setPreferredWidth(25);
-            tblEmployee.getColumnModel().getColumn(3).setPreferredWidth(35);
-            tblEmployee.getColumnModel().getColumn(4).setPreferredWidth(60);
-            tblEmployee.getColumnModel().getColumn(5).setPreferredWidth(35);
-            tblEmployee.getColumnModel().getColumn(6).setPreferredWidth(60);
-        }
+
+        btnDelete.setText("Delete ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 870, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(374, 374, 374)
+                .addComponent(btnDelete)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1)
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addGap(40, 40, 40)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
+                .addComponent(btnDelete)
+                .addGap(23, 23, 23))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(94, 94, 94)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(108, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDelete;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblEmployee;
     // End of variables declaration//GEN-END:variables
-    private void populateTable()
-    {
-        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
-        model.setRowCount(0);
-        for(Employees e : history.getHistory()){
-            Object[] row = new Object[10];
-            row[0] = e.getName();
-            row[1] = e.getEmployeeId();
-            row[2] = e.getAge();
-            row[3] = e.getGender();
-            row[4] = e.getStartDate();
-            row[5] = e.getLevel();
-            row[6] = e.getTeamInfo();
-            row[7] = e.getPositionTitle();
-            row[8] = e.getPhonenumber();
-            row[9] = e.getEmailId();
-            
-            model.addRow(row);
-        }
-    }
 }
