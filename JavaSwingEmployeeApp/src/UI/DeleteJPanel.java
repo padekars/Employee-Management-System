@@ -3,6 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import model.EmployeeHistory;
+import model.Employees;
 
 /**
  *
@@ -13,8 +17,12 @@ public class DeleteJPanel extends javax.swing.JPanel {
     /**
      * Creates new form DeleteJPanel
      */
-    public DeleteJPanel() {
+    EmployeeHistory history;
+    public DeleteJPanel(EmployeeHistory history) {
         initComponents();
+        this.history = history;
+        
+        populateTable();
     }
 
     /**
@@ -49,6 +57,11 @@ public class DeleteJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tblEmployee);
 
         btnDelete.setText("Delete ");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -84,6 +97,27 @@ public class DeleteJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedrowindex = tblEmployee.getSelectedRow();
+        
+        if (selectedrowindex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+        
+            
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        Employees selectedemployee = (Employees) model.getValueAt(selectedrowindex,0);
+        history.deleteVitals(selectedemployee);
+            
+        JOptionPane.showMessageDialog(this,"Employee record deleted.");
+        
+        populateTable();
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDelete;
@@ -91,4 +125,27 @@ public class DeleteJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblEmployee;
     // End of variables declaration//GEN-END:variables
+
+    private void populateTable() {
+        
+    DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        model.setRowCount(0);
+        for(Employees e : history.getHistory()){
+            Object[] row = new Object[10];
+            row[0] = e;
+            row[1] = e.getEmployeeId();
+            row[2] = e.getAge();
+            row[3] = e.getGender();
+            row[4] = e.getStartDate();
+            row[5] = e.getLevel();
+            row[6] = e.getTeamInfo();
+            row[7] = e.getPositionTitle();
+            row[8] = e.getPhonenumber();
+            row[9] = e.getEmailId();
+            
+            model.addRow(row);
+            
+            
+        }
+    }
 }

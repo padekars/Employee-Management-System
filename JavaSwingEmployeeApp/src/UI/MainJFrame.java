@@ -40,7 +40,6 @@ public class MainJFrame extends javax.swing.JFrame {
         workArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 750));
 
         controlPanel.setPreferredSize(new java.awt.Dimension(150, 800));
 
@@ -59,8 +58,18 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         btnUpdate.setText("Update Employee");
+        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Delete Employee");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout controlPanelLayout = new javax.swing.GroupLayout(controlPanel);
         controlPanel.setLayout(controlPanelLayout);
@@ -143,6 +152,22 @@ public class MainJFrame extends javax.swing.JFrame {
         splitPane.setRightComponent(viewjpanel);
         
     }//GEN-LAST:event_btnViewActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        // TODO add your handling code here:
+        
+        DeleteJPanel deletejpanel = new DeleteJPanel(history);
+        splitPane.setRightComponent(deletejpanel);
+        
+        
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
+        // TODO add your handling code here:
+        
+        UpdateJPanel updatejpanel = new UpdateJPanel(history);
+        splitPane.setRightComponent(updatejpanel);
+    }//GEN-LAST:event_btnUpdateActionPerformed
 
     /**
      * @param args the command line arguments

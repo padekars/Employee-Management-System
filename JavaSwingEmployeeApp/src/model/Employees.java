@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package model;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -100,6 +102,9 @@ public class Employees {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-    
+    @Override
+    public String toString(){
+        return name;
+    }
     
 }

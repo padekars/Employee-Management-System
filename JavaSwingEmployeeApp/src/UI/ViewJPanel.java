@@ -82,7 +82,7 @@ public class ViewJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(599, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

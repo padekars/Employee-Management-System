@@ -33,4 +33,8 @@ public class EmployeeHistory {
         return newemployee;
         
     }
+    public void deleteVitals(Employees e){
+        history.remove(e);
+        
+    }
 }

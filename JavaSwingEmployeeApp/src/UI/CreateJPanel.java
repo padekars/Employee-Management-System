@@ -206,6 +206,16 @@ public class CreateJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this,"New Employee added!");
         
         txtName.setText("");
+        txtEmpId.setText("");
+        txtAge.setText("");
+        txtGender.setText("");
+        txtStartDate.setText("");
+        txtLevel.setText("");
+        txtTeamInfo.setText("");
+        txtPhno.setText("");
+        txtEmail.setText("");
+        txtPosTitle.setText("");
+        
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
