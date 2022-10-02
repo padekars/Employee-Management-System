@@ -106,11 +106,11 @@ public class SearchJPanel extends javax.swing.JPanel {
     private void txtSearchboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchboxKeyReleased
         // TODO add your handling code here:
         
-        DefaultTableModel table = (DefaultTableModel)tblEmployee.getModel();
-        String search = txtSearchbox.getText().toLowerCase();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        DefaultTableModel model = (DefaultTableModel)tblEmployee.getModel();
+        String searchkeyword = "(?i)"+txtSearchbox.getText();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
         tblEmployee.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(search));
+        tr.setRowFilter(RowFilter.regexFilter(searchkeyword));
         
     }//GEN-LAST:event_txtSearchboxKeyReleased
 

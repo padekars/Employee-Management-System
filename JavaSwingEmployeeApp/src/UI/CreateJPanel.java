@@ -12,6 +12,8 @@ import model.Employees;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.ImageIcon;
+import java.lang.Character;
+import java.util.regex.*;
 
 /**
  *
@@ -79,6 +81,12 @@ public class CreateJPanel extends javax.swing.JPanel {
         lblGender.setText("Gender:");
 
         lblStartDate.setText("Start Date:");
+
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNameKeyReleased(evt);
+            }
+        });
 
         lblLevel.setText("Level:");
 
@@ -205,6 +213,50 @@ public class CreateJPanel extends javax.swing.JPanel {
         String phno = txtPhno.getText();
         String email = txtEmail.getText();
         String title = txtPosTitle.getText();
+        if(name.equals("")){           
+        JOptionPane.showMessageDialog(this,"Name required!");
+        txtName.requestFocus();
+        return;
+        }
+        if(id.equals("")){           
+        JOptionPane.showMessageDialog(this,"Employee ID required!");
+        txtEmpId.requestFocus();
+        return;
+        }
+        
+        if(gender.equals("")){           
+        JOptionPane.showMessageDialog(this,"Gender required!");
+        txtGender.requestFocus();
+        return;
+        }
+        
+        if(date.equals("")){           
+        JOptionPane.showMessageDialog(this,"Start Date required!");
+        txtStartDate.requestFocus();
+        return;
+        }
+        
+        
+        if(teaminfo.equals("")){           
+        JOptionPane.showMessageDialog(this,"Team Info required!");
+        txtTeamInfo.requestFocus();
+        return;
+        }
+        if(phno.equals("")){           
+        JOptionPane.showMessageDialog(this,"Phone number required!");
+        txtPhno.requestFocus();
+        return;
+        }
+        if(email.equals("")){           
+        JOptionPane.showMessageDialog(this,"Email ID required!");
+        txtEmail.requestFocus();
+        return;
+        }
+        if(title.equals("")){           
+        JOptionPane.showMessageDialog(this,"Title required!");
+        txtPosTitle.requestFocus();
+        return;
+        }
         
         
         
@@ -262,6 +314,17 @@ public class CreateJPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnBrowseImageActionPerformed
+
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
+        // TODO add your handling code here:
+        
+        String pattern = "^[a-zA-Z]{1,30}$";
+        Pattern pat = Pattern.compile(pattern);
+        Matcher match = pat.matcher(txtName.getText());
+        
+        
+        
+    }//GEN-LAST:event_txtNameKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
