@@ -4,9 +4,14 @@
  */
 package UI;
 
+import java.awt.Image;
+import java.io.File;
+import javax.swing.JFileChooser;
 import model.EmployeeHistory;
 import model.Employees;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -19,6 +24,8 @@ public class CreateJPanel extends javax.swing.JPanel {
      * 
      */
     EmployeeHistory history;
+    String photo = "";
+    String selectedimgpath ="";
     public CreateJPanel(EmployeeHistory history) {
         initComponents();
         this.history = history;
@@ -55,6 +62,8 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtPosTitle = new javax.swing.JTextField();
         txtPhno = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
+        btnBrowseImage = new javax.swing.JButton();
+        lblImage = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(850, 750));
 
@@ -89,6 +98,13 @@ public class CreateJPanel extends javax.swing.JPanel {
             }
         });
 
+        btnBrowseImage.setText("Upload Image:");
+        btnBrowseImage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBrowseImageActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,6 +115,8 @@ public class CreateJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSave)
+                    .addComponent(btnBrowseImage)
                     .addComponent(lblStartDate)
                     .addComponent(lblGender)
                     .addComponent(lblAge)
@@ -110,7 +128,8 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(txtAge, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmpId, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtStartDate)
-                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(58, 58, 58)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblTeamInfo)
@@ -125,11 +144,7 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(txtTeamInfo, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtLevel, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtEmail))
-                .addGap(0, 116, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(387, 387, 387))
+                .addGap(0, 71, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +183,13 @@ public class CreateJPanel extends javax.swing.JPanel {
                     .addComponent(txtStartDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(167, 167, 167)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBrowseImage)
+                    .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(109, 109, 109)
                 .addComponent(btnSave)
-                .addContainerGap(278, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -189,6 +208,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         String title = txtPosTitle.getText();
         
         
+        
         Employees e = history.addNewEmployee();
         
         e.setName(name);
@@ -201,6 +221,9 @@ public class CreateJPanel extends javax.swing.JPanel {
         e.setPositionTitle(title);
         e.setPhonenumber(phno);
         e.setEmailId(email);
+        e.setPhoto(selectedimgpath);
+        
+        
         
         
         JOptionPane.showMessageDialog(this,"New Employee added!");
@@ -215,17 +238,41 @@ public class CreateJPanel extends javax.swing.JPanel {
         txtPhno.setText("");
         txtEmail.setText("");
         txtPosTitle.setText("");
+        lblImage.setIcon(null);
         
         
     }//GEN-LAST:event_btnSaveActionPerformed
+    
+    private void btnBrowseImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBrowseImageActionPerformed
+        // TODO add your handling code here:
+        
+        JFileChooser browseimgfile = new JFileChooser();
+        FileNameExtensionFilter ef = new FileNameExtensionFilter("IMAGES","png","jpg","jpeg");
+        browseimgfile.addChoosableFileFilter(ef);
+        int showDialogue = browseimgfile.showOpenDialog(null);
+        if(showDialogue == JFileChooser.APPROVE_OPTION){
+            File selectedimgfile = browseimgfile.getSelectedFile();
+            selectedimgpath = selectedimgfile.getAbsolutePath();
+            JOptionPane.showMessageDialog(null, selectedimgpath);
+            ImageIcon ii = new ImageIcon(selectedimgpath);
+            Image image = ii.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+            lblImage.setIcon(new ImageIcon (image));
+            
+        }
+        
+        
+        
+    }//GEN-LAST:event_btnBrowseImageActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBrowseImage;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblEmpId;
     private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblLevel;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPhno;

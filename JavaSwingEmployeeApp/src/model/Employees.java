@@ -22,6 +22,16 @@ public class Employees {
     private String positionTitle;
     private String phonenumber;
     private String emailId;
+    private String photo;
+    
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
 
     public String getName() {
         return name;

@@ -28,6 +28,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btnSave" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnBrowseImage" min="-2" max="-2" attributes="0"/>
                   <Component id="lblStartDate" min="-2" max="-2" attributes="0"/>
                   <Component id="lblGender" min="-2" max="-2" attributes="0"/>
                   <Component id="lblAge" min="-2" max="-2" attributes="0"/>
@@ -41,6 +43,7 @@
                   <Component id="txtEmpId" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtStartDate" max="32767" attributes="0"/>
                   <Component id="txtName" alignment="0" max="32767" attributes="0"/>
+                  <Component id="lblImage" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
@@ -58,12 +61,7 @@
                   <Component id="txtLevel" alignment="0" max="32767" attributes="0"/>
                   <Component id="txtEmail" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="116" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="387" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -111,9 +109,14 @@
                   <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txtEmail" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnBrowseImage" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblImage" alignment="3" min="-2" pref="105" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
               <Component id="btnSave" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="278" max="32767" attributes="0"/>
+              <EmptySpace pref="208" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -205,6 +208,16 @@
     <Component class="javax.swing.JTextField" name="txtPhno">
     </Component>
     <Component class="javax.swing.JTextField" name="txtEmail">
+    </Component>
+    <Component class="javax.swing.JButton" name="btnBrowseImage">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Upload Image:"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBrowseImageActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblImage">
     </Component>
   </SubComponents>
 </Form>
