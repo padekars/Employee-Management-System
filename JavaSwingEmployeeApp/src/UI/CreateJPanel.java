@@ -24,7 +24,6 @@ public class CreateJPanel extends javax.swing.JPanel {
      * 
      */
     EmployeeHistory history;
-    String photo = "";
     String selectedimgpath ="";
     public CreateJPanel(EmployeeHistory history) {
         initComponents();
