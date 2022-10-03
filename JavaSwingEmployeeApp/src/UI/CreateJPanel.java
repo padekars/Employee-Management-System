@@ -388,7 +388,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         e.setEmailId(email);
         e.setPhoto(selectedimgpath);
         
-        
+        //Check if all fields are filled or not
         if(txtName.getText().equals("") || 
            txtEmpId.getText().equals("") ||
            txtAge.getText().equals("") ||
@@ -405,7 +405,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         }
         
         JOptionPane.showMessageDialog(this,"New Employee added!");
-        
+        // Clear all text fields after adding a employee record
         txtName.setText("");
         txtEmpId.setText("");
         txtAge.setText("");
@@ -441,7 +441,7 @@ public class CreateJPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnBrowseImageActionPerformed
-
+    //Data validation for all fields
     private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
         
