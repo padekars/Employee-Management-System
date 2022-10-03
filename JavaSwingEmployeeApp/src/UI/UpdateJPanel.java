@@ -329,7 +329,7 @@ public class UpdateJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for(Employees e : history.getHistory()){
             Object[] row = new Object[10];
-            row[0] = e.getName();
+            row[0] = e;
             row[1] = e.getEmployeeId();
             row[2] = e.getAge();
             row[3] = e.getGender();

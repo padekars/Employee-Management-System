@@ -14,10 +14,10 @@ public class Employees {
     
     private String name;
     private String employeeId;
-    private int age;
+    private String age;
     private String gender;
     private String startDate;
-    private int level;
+    private String level;
     private String teamInfo;
     private String positionTitle;
     private String phonenumber;
@@ -49,11 +49,11 @@ public class Employees {
         this.employeeId = employeeId;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
@@ -73,11 +73,11 @@ public class Employees {
         this.startDate = startDate;
     }
 
-    public int getLevel() {
+    public String getLevel() {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
