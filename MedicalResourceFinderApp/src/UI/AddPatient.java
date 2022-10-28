@@ -157,7 +157,7 @@ public class AddPatient extends javax.swing.JPanel {
         
         }
         
-        //check if Id already present
+        //check if Patient Id already present
         for(Patient p : patientlist.getPatientlist())
         {
             if(p.getPersonid().equals(id))

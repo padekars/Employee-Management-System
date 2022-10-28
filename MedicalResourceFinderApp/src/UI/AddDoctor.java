@@ -174,6 +174,21 @@ public class AddDoctor extends javax.swing.JPanel {
         
         }
         
+        
+        //check if Doctor Id already present
+        for(Doctor p : doctorlist.getDoctorlist())
+        {
+            if(p.getPersonid().equals(id))
+            {
+                    
+            JOptionPane.showMessageDialog(this,"Username already exists..Please use different User ID!");
+            txtdid.setText("");
+            return;
+            }
+            
+        }
+        
+        
         Doctor d = doctorlist.addNewDoctor();
         
         d.setPersonname(name);
