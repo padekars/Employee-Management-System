@@ -9,7 +9,15 @@ package model;
  * @author snehal
  */
 public class Patient extends Person{
- 
+    String ppass;
+
+    public String getPpass() {
+        return ppass;
+    }
+
+    public void setPpass(String ppass) {
+        this.ppass = ppass;
+    }
    
 
  

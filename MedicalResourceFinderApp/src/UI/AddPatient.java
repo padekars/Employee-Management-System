@@ -142,16 +142,10 @@ public class AddPatient extends javax.swing.JPanel {
         int age = Integer.parseInt(txtpage.getText());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         String dob = sdf.format(pdob.getDate());
-        //String date = txtStartDate.getText();
-        //String level = txtLevel.getText();
-        //String teaminfo = txtTeamInfo.getText();
-        //String phno = txtPhno.getText();
-        //String email = txtEmail.getText();
-        //String title = txtPosTitle.getText();
         
         
         //Check if all fields are filled or not
-        if(txtpname.getText().equals("") || 
+        if(txtpname.equals("") || 
            txtpid.getText().equals("") ||
            txtpage.getText().equals("") ||
            dob.equals("")){
@@ -163,12 +157,30 @@ public class AddPatient extends javax.swing.JPanel {
         
         }
         
+        //check if Id already present
+        for(Patient p : patientlist.getPatientlist())
+        {
+            if(p.getPersonid().equals(id))
+            {
+                    
+            JOptionPane.showMessageDialog(this,"Username already exists..Please use different User ID!");
+            txtpid.setText("");
+            return;
+            }
+            
+        }
+        
+        
         Patient p = patientlist.addNewPatient();
+        PatientDirectory newpatientdirectory = new PatientDirectory();
+        //newpatientdirectory.addNewPatient(p);
+        
         
         p.setPersonname(name);
         p.setPersonid(id);
         p.setPersonage(age);
         p.setPersondob(dob);
+        
         
         
         JOptionPane.showMessageDialog(this,"New Patient added!");

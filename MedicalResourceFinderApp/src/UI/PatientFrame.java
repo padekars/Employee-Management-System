@@ -55,6 +55,11 @@ public class PatientFrame extends javax.swing.JFrame {
         });
 
         jButton5.setText("Update Patient");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Delete Patient");
 
@@ -82,7 +87,7 @@ public class PatientFrame extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addGap(38, 38, 38)
                 .addComponent(jButton6)
-                .addContainerGap(320, Short.MAX_VALUE))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
 
         jSplitPane2.setLeftComponent(jPanel1);
@@ -91,11 +96,11 @@ public class PatientFrame extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 736, Short.MAX_VALUE)
+            .addGap(0, 594, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 628, Short.MAX_VALUE)
+            .addGap(0, 560, Short.MAX_VALUE)
         );
 
         jSplitPane2.setRightComponent(jPanel2);
@@ -127,6 +132,12 @@ public class PatientFrame extends javax.swing.JFrame {
         ViewPatient vp = new ViewPatient(patientlist);
         jSplitPane2.setRightComponent(vp);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        UpdatePatient up = new UpdatePatient(patientlist);
+        jSplitPane2.setRightComponent(up);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,4 +183,7 @@ public class PatientFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane2;
     // End of variables declaration//GEN-END:variables
+
+
+
 }

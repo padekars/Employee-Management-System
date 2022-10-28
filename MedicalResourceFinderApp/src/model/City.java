@@ -9,5 +9,33 @@ package model;
  * @author snehal
  */
 public class City {
+    String Cityid;
+    String Cityname;
+    String Citycode;
+
+    public String getCityid() {
+        return Cityid;
+    }
+
+    public void setCityid(String Cityid) {
+        this.Cityid = Cityid;
+    }
+
+    public String getCityname() {
+        return Cityname;
+    }
+
+    public void setCityname(String Cityname) {
+        this.Cityname = Cityname;
+    }
+
+    public String getCitycode() {
+        return Citycode;
+    }
+
+    public void setCitycode(String Citycode) {
+        this.Citycode = Citycode;
+    }
+    
     
 }

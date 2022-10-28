@@ -67,6 +67,11 @@ public class AddDoctor extends javax.swing.JPanel {
         });
 
         dspecz.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "MBBS", "BHMS", "BAMS" }));
+        dspecz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dspeczActionPerformed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 1, 13)); // NOI18N
         jButton1.setText("Save");
@@ -190,6 +195,10 @@ public class AddDoctor extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void dspeczActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dspeczActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dspeczActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
