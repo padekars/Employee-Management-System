@@ -10,15 +10,7 @@ package model;
  */
 public class Doctor extends Person {
     String dspecz;
-    String dpass;
 
-    public String getDpass() {
-        return dpass;
-    }
-
-    public void setDpass(String dpass) {
-        this.dpass = dpass;
-    }
 
     public String getDspecz() {
         return dspecz;

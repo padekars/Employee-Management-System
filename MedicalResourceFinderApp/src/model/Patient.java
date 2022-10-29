@@ -9,16 +9,32 @@ package model;
  * @author snehal
  */
 public class Patient extends Person{
-    String ppass;
+   String bloodpressure;
+   String hb;
+   String bloodgroup;
 
-    public String getPpass() {
-        return ppass;
+    public String getBloodgroup() {
+        return bloodgroup;
     }
 
-    public void setPpass(String ppass) {
-        this.ppass = ppass;
+    public void setBloodgroup(String bloodgroup) {
+        this.bloodgroup = bloodgroup;
     }
-   
 
+    public String getBloodpressure() {
+        return bloodpressure;
+    }
+
+    public void setBloodpressure(String bloodpressure) {
+        this.bloodpressure = bloodpressure;
+    }
+
+    public String getHb() {
+        return hb;
+    }
+
+    public void setHb(String hb) {
+        this.hb = hb;
+    }
  
 }

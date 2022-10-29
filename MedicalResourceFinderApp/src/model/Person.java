@@ -13,10 +13,39 @@ public class Person {
     String persontype;
     String personname;
     int personage;
+    String personcontactno;
+    String personemailid;
     String persondob;
     String City;
     String Community;
     String House;
+    String personpass;
+
+    public String getPersonpass() {
+        return personpass;
+    }
+
+    public void setPersonpass(String personpass) {
+        this.personpass = personpass;
+    }
+
+
+
+    public String getPersoncontactno() {
+        return personcontactno;
+    }
+
+    public void setPersoncontactno(String personcontactno) {
+        this.personcontactno = personcontactno;
+    }
+
+    public String getPersonemailid() {
+        return personemailid;
+    }
+
+    public void setPersonemailid(String personemailid) {
+        this.personemailid = personemailid;
+    }
 
     public String getCity() {
         return City;

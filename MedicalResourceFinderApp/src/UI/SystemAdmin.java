@@ -114,7 +114,7 @@ public class SystemAdmin extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        PatientFrame pf = new PatientFrame();
+        Patient_frame pf = new Patient_frame();
         pf.setVisible(true);
         
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -122,7 +122,7 @@ public class SystemAdmin extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        DoctorFrame df = new DoctorFrame();
+        Doctor_frame df = new Doctor_frame();
         df.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
