@@ -10,7 +10,42 @@ package model;
  */
 public class Doctor extends Person {
     String dspecz;
+    String dcity;
+    String dcommunity;
+    String dhos;
+    public Doctor(String personid,String personname,int personage,String dspecz, String dcity, String dcommunity, String dhos){
+        super(personid,personname,personage);
+        this.dspecz = dspecz;
+        this.dcity = dcity;
+        this.dcommunity = dcommunity;
+        this.dhos = dhos;
+        
+    
+    }
 
+    public String getDcity() {
+        return dcity;
+    }
+
+    public void setDcity(String dcity) {
+        this.dcity = dcity;
+    }
+
+    public String getDcommunity() {
+        return dcommunity;
+    }
+
+    public void setDcommunity(String dcommunity) {
+        this.dcommunity = dcommunity;
+    }
+
+    public String getDhos() {
+        return dhos;
+    }
+
+    public void setDhos(String dhos) {
+        this.dhos = dhos;
+    }
 
     public String getDspecz() {
         return dspecz;

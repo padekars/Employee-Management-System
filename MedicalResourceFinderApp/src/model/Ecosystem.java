@@ -12,7 +12,5 @@ public class Ecosystem {
      PatientDirectory patientlist;
      DoctorDirectory doctorlist;
      
-     public static void main(String arg[]) {
-         Ecosystem system = new Ecosystem();
-     }
+     
 }

@@ -20,6 +20,14 @@ public class Person {
     String Community;
     String House;
     String personpass;
+    
+    public Person (String personid, String personname, int personage)
+    {
+        this.personid = personid;
+        this.personname = personname;
+        this.personage = personage;
+        
+    }
 
     public String getPersonpass() {
         return personpass;

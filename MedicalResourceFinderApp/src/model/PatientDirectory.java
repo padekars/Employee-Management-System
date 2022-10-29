@@ -12,11 +12,24 @@ import java.util.ArrayList;
  * @author snehal
  */
 public class PatientDirectory {
-    private ArrayList<Patient> patientlist;
+    
+    private static PatientDirectory patientinstance = null;
+    private ArrayList<Patient> patientlist = new ArrayList<Patient>();
 
     public PatientDirectory() {
-        this.patientlist = new ArrayList<Patient>();
+       // this.patientlist = new ArrayList<Patient>();
     }
+    
+        
+    public static PatientDirectory getPatientinstance(){
+        if(patientinstance == null)
+        {
+            patientinstance = new PatientDirectory();
+            return patientinstance;
+        }
+        return patientinstance;
+    }
+    
     
     public ArrayList<Patient> getPatientlist() {
         return this.patientlist;
@@ -29,11 +42,9 @@ public class PatientDirectory {
     // fetch a patient object given username and password
     
 
-    public Patient addNewPatient()
+    public void addNewPatient(Patient p)
     {
-        Patient newpatient = new Patient();
-        patientlist.add(newpatient);
-        return newpatient;
+        patientlist.add(p);
        
     }
     public void deletePatient(Patient p){

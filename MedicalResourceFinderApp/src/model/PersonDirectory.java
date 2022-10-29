@@ -29,15 +29,15 @@ public class PersonDirectory {
     // fetch a patient object given username and password
     
 
-    public Person addNewPerson()
-    {
-        Person newperson = new Person();
-        personlist.add(newperson);
-        return newperson;
-       
-    }
-    public void deletePerson(Person p){
-        personlist.remove(p);
-        
-    }
+//    public Person addNewPerson()
+//    {
+//        Person newperson = new Person();
+//        personlist.add(newperson);
+//        return newperson;
+//       
+//    }
+//    public void deletePerson(Person p){
+//        personlist.remove(p);
+//        
+//    }
 }

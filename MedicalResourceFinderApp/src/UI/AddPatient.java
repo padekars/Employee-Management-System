@@ -171,15 +171,15 @@ public class AddPatient extends javax.swing.JPanel {
         }
         
         
-        Patient p = patientlist.addNewPatient();
+        //Patient p = patientlist.addNewPatient();
         PatientDirectory newpatientdirectory = new PatientDirectory();
         //newpatientdirectory.addNewPatient(p);
-        
-        
-        p.setPersonname(name);
-        p.setPersonid(id);
-        p.setPersonage(age);
-        p.setPersondob(dob);
+//        
+//        
+//        p.setPersonname(name);
+//        p.setPersonid(id);
+//        p.setPersonage(age);
+//        p.setPersondob(dob);
         
         
         

@@ -189,13 +189,13 @@ public class AddDoctor extends javax.swing.JPanel {
         }
         
         
-        Doctor d = doctorlist.addNewDoctor();
+        //Doctor d = doctorlist.addNewDoctor();
         
-        d.setPersonname(name);
-        d.setPersonid(id);
-        d.setPersonage(age);
-        d.setPersondob(dob);
-        d.setDspecz(specz);
+//        d.setPersonname(name);
+//        d.setPersonid(id);
+//        d.setPersonage(age);
+//        d.setPersondob(dob);
+//        d.setDspecz(specz);
         
         
         JOptionPane.showMessageDialog(this,"New Doctor added!");
