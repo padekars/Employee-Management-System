@@ -43,10 +43,10 @@ public class EncounterFrame extends javax.swing.JFrame {
         int itr1 = 0;
         
         for(Doctor d: DoctorDirectory.getDoctorinstance().getDoctorlist()) {
-            patientArray[itr1++] = d.getPersonname();
+            doctorArray[itr1++] = d.getPersonname();
         }
         
-        pcombo.setModel(new javax.swing.DefaultComboBoxModel<>(patientArray));
+        dcombo.setModel(new javax.swing.DefaultComboBoxModel<>(doctorArray));
     }
 
     /**

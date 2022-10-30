@@ -5,6 +5,8 @@
 package UI;
 
 import java.text.SimpleDateFormat;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.*;
@@ -24,6 +26,28 @@ public class Patient_frame extends javax.swing.JFrame {
         initComponents();
         //patientlist = new PatientDirectory();
         populateTable();
+        
+        
+        int cityArraySize = CityDirectory.getCityinstance().getCitylist().size();
+        String[] cityArray = new String[cityArraySize];
+        int itr = 0;
+        
+        for(City city: CityDirectory.getCityinstance().getCitylist()) {
+            cityArray[itr++] = city.getCityname();
+        }
+        
+        pcity.setModel(new javax.swing.DefaultComboBoxModel<>(cityArray));
+        
+        
+        int commArraySize = CommunityDirectory.getCommunityinstance().getCommunitylist().size();
+        String[] communityArray = new String[commArraySize];
+        int itr1 = 0;
+        
+        for(Community c: CommunityDirectory.getCommunityinstance().getCommunitylist()) {
+            communityArray[itr1++] = c.getCommunityname();
+        }
+        
+        pcommunity.setModel(new javax.swing.DefaultComboBoxModel<>(communityArray));
     }
 
     /**
@@ -50,9 +74,16 @@ public class Patient_frame extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtbg = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        lbliderror = new javax.swing.JLabel();
+        lblnameerror = new javax.swing.JLabel();
+        lblageerror = new javax.swing.JLabel();
+        combobg = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        pcity = new javax.swing.JComboBox<>();
+        pcommunity = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +96,24 @@ public class Patient_frame extends javax.swing.JFrame {
         jLabel3.setText("Patient Name");
 
         jLabel4.setText("Patient Age");
+
+        txtpid.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtpidKeyReleased(evt);
+            }
+        });
+
+        txtpname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtpnameKeyReleased(evt);
+            }
+        });
+
+        txtpage.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtpageKeyReleased(evt);
+            }
+        });
 
         jButton1.setText("Create");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -84,7 +133,7 @@ public class Patient_frame extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Patient ID", "Patient Name", "Patient Age", "Patient DOB"
+                "Patient ID", "Patient Name", "Patient Age", "Patient Bloodgroup"
             }
         ));
         patienttable.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -125,6 +174,25 @@ public class Patient_frame extends javax.swing.JFrame {
             }
         });
 
+        lbliderror.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        lbliderror.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblnameerror.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        lblnameerror.setForeground(new java.awt.Color(255, 0, 0));
+
+        lblageerror.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
+        lblageerror.setForeground(new java.awt.Color(255, 0, 0));
+
+        combobg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+" }));
+
+        jLabel7.setText("Patient City");
+
+        jLabel8.setText("Patient Community");
+
+        pcity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        pcommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,34 +203,41 @@ public class Patient_frame extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
+                            .addGap(21, 21, 21)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
                             .addGap(173, 173, 173)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel4)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel1)
-                                .addComponent(jLabel6))
+                                .addComponent(jLabel6)
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel8))
                             .addGap(83, 83, 83)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtpid, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
+                                .addComponent(lbliderror)
+                                .addComponent(txtpid, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
                                 .addComponent(txtpname)
                                 .addComponent(txtpage)
+                                .addComponent(lblnameerror)
+                                .addComponent(lblageerror)
                                 .addComponent(txtpass)
-                                .addComponent(txtbg)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(21, 21, 21)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(combobg, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pcity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pcommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(120, 120, 120)
+                .addGap(114, 114, 114)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(120, 120, 120)
+                .addGap(121, 121, 121)
                 .addComponent(jButton2)
-                .addGap(135, 135, 135)
+                .addGap(134, 134, 134)
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5)
-                .addGap(53, 53, 53))
+                .addGap(55, 55, 55))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,33 +248,47 @@ public class Patient_frame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtpid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbliderror)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtpname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblnameerror)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtpage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblageerror)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
-                    .addComponent(txtbg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                    .addComponent(combobg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(pcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(pcommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
                     .addComponent(jButton5))
-                .addGap(18, 18, 18)
+                .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addGap(129, 129, 129))
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -213,7 +302,7 @@ public class Patient_frame extends javax.swing.JFrame {
         int age = Integer.parseInt(txtpage.getText());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //String dob = sdf.format(pdob.getDate());
-         String bg = txtbg.getText();
+         String bg = combobg.getSelectedItem().toString();
 //        String bp = txtbp.getText();
 //        String hb = txthb.getText();
 
@@ -221,7 +310,7 @@ public class Patient_frame extends javax.swing.JFrame {
         if(txtpname.equals("") ||
             txtpid.getText().equals("") ||
             txtpage.getText().equals("") ||
-                txtbg.getText().equals("")
+                bg.equals("")
                 //||
             //dob.equals("")
                 )
@@ -261,7 +350,7 @@ public class Patient_frame extends javax.swing.JFrame {
         txtpid.setText("");
         txtpage.setText("");
         //pdob.setDate(null);
-        txtbg.setText("");
+        combobg.setSelectedIndex(0);
 //        txtpass.setText("");
 //        txtbp.setText("");
 //        txthb.setText("");
@@ -279,7 +368,7 @@ public class Patient_frame extends javax.swing.JFrame {
             String name = txtpname.getText();
             String empid = txtpid.getText();
             String age = txtpage.getText();
-            String bg = txtbg.getText();
+            String bg = combobg.getSelectedItem().toString();
 
             tblmodel.setValueAt(empid, patienttable.getSelectedRow(), 0);
             tblmodel.setValueAt(name, patienttable.getSelectedRow(), 1);
@@ -311,7 +400,7 @@ public class Patient_frame extends javax.swing.JFrame {
          txtpid.setText("");
         txtpage.setText("");
         //pdob.setDate(null);
-        txtbg.setText("");
+        combobg.setSelectedIndex(0);
         txtpname.setText("");
         txtpass.setText("");
         
@@ -361,7 +450,7 @@ public class Patient_frame extends javax.swing.JFrame {
         txtpname.setText(tblname);
         txtpid.setText(tblid);
         txtpage.setText(tblage);
-        txtbg.setText(tblbg);
+        combobg.setSelectedItem(tblbg);
         //dob.setDate(tbldob);
         
         
@@ -370,8 +459,6 @@ public class Patient_frame extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         
-        SystemAdmin sa = new SystemAdmin();
-        sa.setVisible(true);
         
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -379,19 +466,60 @@ public class Patient_frame extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         
-        int selectedrowindex = patienttable.getSelectedRow();
         
-        if (selectedrowindex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a patient row to create encounter.");
-            return;
-        }
         
-            
         EncounterFrame ef = new EncounterFrame();
         ef.setVisible(true);
         
         
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void txtpidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpidKeyReleased
+        // TODO add your handling code here:
+        
+        
+        String pattern = "^[a-zA-Z0-9]{0,30}$";
+        Pattern pat = Pattern.compile(pattern);
+        Matcher match = pat.matcher(txtpid.getText());
+        if(!match.matches()){
+            lbliderror.setText("ID is incorrect. Please enter characters or numbers.");
+        }
+        else{
+            lbliderror.setText(null);
+        }
+        
+    }//GEN-LAST:event_txtpidKeyReleased
+
+    private void txtpnameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpnameKeyReleased
+        // TODO add your handling code here:
+        
+        
+         String pattern = "^[a-zA-Z]{0,30}$";
+        Pattern pat = Pattern.compile(pattern);
+        Matcher match = pat.matcher(txtpname.getText());
+        if(!match.matches()){
+            lblnameerror.setText("Name is incorrect. Please enter only characters.");
+        }
+        else{
+            lblnameerror.setText(null);
+        }
+        
+    }//GEN-LAST:event_txtpnameKeyReleased
+
+    private void txtpageKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpageKeyReleased
+        // TODO add your handling code here:
+        
+          String pattern = "^[0-9]{0,3}$";
+        Pattern pat = Pattern.compile(pattern);
+        Matcher match = pat.matcher(txtpage.getText());
+        if(!match.matches()){
+            lblageerror.setText("Age is incorrect. Please enter max 3 digits only");
+        }
+        else{
+            lblageerror.setText(null);
+        }
+        
+    }//GEN-LAST:event_txtpageKeyReleased
 
     /**
      * @param args the command line arguments
@@ -429,6 +557,7 @@ public class Patient_frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combobg;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -440,9 +569,15 @@ public class Patient_frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblageerror;
+    private javax.swing.JLabel lbliderror;
+    private javax.swing.JLabel lblnameerror;
     private javax.swing.JTable patienttable;
-    private javax.swing.JTextField txtbg;
+    private javax.swing.JComboBox<String> pcity;
+    private javax.swing.JComboBox<String> pcommunity;
     private javax.swing.JTextField txtpage;
     private javax.swing.JPasswordField txtpass;
     private javax.swing.JTextField txtpid;

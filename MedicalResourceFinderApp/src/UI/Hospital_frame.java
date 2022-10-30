@@ -23,6 +23,28 @@ public class Hospital_frame extends javax.swing.JFrame {
     public Hospital_frame() {
         initComponents();
         populateTable();
+        
+        int cityArraySize = CityDirectory.getCityinstance().getCitylist().size();
+        String[] cityArray = new String[cityArraySize];
+        int itr = 0;
+        
+        for(City city: CityDirectory.getCityinstance().getCitylist()) {
+            cityArray[itr++] = city.getCityname();
+        }
+        
+        hcity.setModel(new javax.swing.DefaultComboBoxModel<>(cityArray));
+        
+        
+        int communityArraySize = CommunityDirectory.getCommunityinstance().getCommunitylist().size();
+        String[] communityArray = new String[communityArraySize];
+        int itr1 = 0;
+        
+        for(Community c: CommunityDirectory.getCommunityinstance().getCommunitylist()) {
+            communityArray[itr1++] = c.getCommunityname();
+        }
+        
+        hcommunity.setModel(new javax.swing.DefaultComboBoxModel<>(communityArray));
+        
     }
 
     /**
@@ -35,8 +57,6 @@ public class Hospital_frame extends javax.swing.JFrame {
     private void initComponents() {
 
         txthname = new javax.swing.JTextField();
-        txthcity = new javax.swing.JTextField();
-        txthcommunity = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -47,6 +67,8 @@ public class Hospital_frame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        hcity = new javax.swing.JComboBox<>();
+        hcommunity = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,13 +90,13 @@ public class Hospital_frame extends javax.swing.JFrame {
 
         hospitaltable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Hospital Name", "Hospital City", "Hospital Community", "Title 4"
+                "Hospital Name", "Hospital City", "Hospital Community"
             }
         ));
         jScrollPane1.setViewportView(hospitaltable);
@@ -90,6 +112,10 @@ public class Hospital_frame extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
+
+        hcity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        hcommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,8 +134,8 @@ public class Hospital_frame extends javax.swing.JFrame {
                             .addGap(94, 94, 94)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txthname, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                                .addComponent(txthcity)
-                                .addComponent(txthcommunity)))
+                                .addComponent(hcity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(hcommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(19, 19, 19)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -138,12 +164,12 @@ public class Hospital_frame extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txthcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
+                    .addComponent(hcity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txthcommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                    .addComponent(hcommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
@@ -162,13 +188,13 @@ public class Hospital_frame extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = txthname.getText();
         //String dob = sdf.format(pdob.getDate());
-        String city = txthcity.getText();
-        String community = txthcommunity.getText();
+        String city = hcity.getSelectedItem().toString();
+        String community = hcommunity.getSelectedItem().toString();
 
         //Check if all fields are filled or not
         if(txthname.equals("") ||
-            txthcity.getText().equals("") ||
-            txthcommunity.getText().equals("") 
+            hcity.getSelectedItem().toString().equals("") ||
+            hcommunity.getSelectedItem().toString().equals("") 
                 //||
             //dob.equals("")
                 )
@@ -192,8 +218,8 @@ public class Hospital_frame extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this,"New Hospital added!");
         // Clear all text fields after adding a employee record
         txthname.setText("");
-        txthcity.setText("");
-        txthcommunity.setText("");
+        hcity.setSelectedIndex(0);
+        hcommunity.setSelectedIndex(0);
         //pdob.setDate(null);
         
         populateTable();
@@ -204,9 +230,6 @@ public class Hospital_frame extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
-
-        SystemAdmin sa = new SystemAdmin();
-        sa.setVisible(true);
 
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
@@ -247,6 +270,8 @@ public class Hospital_frame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> hcity;
+    private javax.swing.JComboBox<String> hcommunity;
     private javax.swing.JTable hospitaltable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
@@ -257,8 +282,6 @@ public class Hospital_frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField txthcity;
-    private javax.swing.JTextField txthcommunity;
     private javax.swing.JTextField txthname;
     // End of variables declaration//GEN-END:variables
 private void populateTable()

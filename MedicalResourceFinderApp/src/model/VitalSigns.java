@@ -8,7 +8,7 @@ package model;
  *
  * @author snehal
  */
-public class VitalSigns {
+public class VitalSigns extends Encounter{
     String bloodpressure;
     String heartrate;
     int oxygenlevel;

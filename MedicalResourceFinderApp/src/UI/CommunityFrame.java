@@ -32,7 +32,7 @@ public class CommunityFrame extends javax.swing.JFrame {
             cityArray[itr++] = city.getCityname();
         }
         
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(cityArray));
+        combocity.setModel(new javax.swing.DefaultComboBoxModel<>(cityArray));
     }
     
     
@@ -60,19 +60,19 @@ public class CommunityFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtcommunitycode = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combocity = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         communitytable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Community Id", "Community Name"
+                "Community Id", "Community Name", "Community Code"
             }
         ));
         jScrollPane1.setViewportView(communitytable);
@@ -117,7 +117,7 @@ public class CommunityFrame extends javax.swing.JFrame {
 
         jLabel5.setText("Community Code");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combocity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,7 +141,7 @@ public class CommunityFrame extends javax.swing.JFrame {
                                 .addComponent(txtcommunityid)
                                 .addComponent(txtcommunityname, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
                                 .addComponent(txtcommunitycode)
-                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(combocity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(35, 35, 35)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,7 +169,7 @@ public class CommunityFrame extends javax.swing.JFrame {
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combocity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -241,12 +241,13 @@ public class CommunityFrame extends javax.swing.JFrame {
             String name = txtcommunityname.getText();
             String empid = txtcommunityid.getText();
             String code = txtcommunitycode.getText();
+            String city = combocity.getSelectedItem().toString();
 
             tblmodel.setValueAt(empid, communitytable.getSelectedRow(), 0);
             tblmodel.setValueAt(name, communitytable.getSelectedRow(), 1);
             tblmodel.setValueAt(code, communitytable.getSelectedRow(), 2);
 
-            for(City e : CityDirectory.getCityinstance().getCitylist()){
+            for(Community e : CommunityDirectory.getCommunityinstance().getCommunitylist()){
 
                 if(e.getCityid().equals(empid)){
                     e.setCityname(name);
@@ -324,12 +325,12 @@ public class CommunityFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combocity;
     private javax.swing.JTable communitytable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
