@@ -10,4 +10,43 @@ package model;
  */
 public class Hospital {
     
+    String hospitalname;
+    String hospitalcity;
+    String hospitalcommunity;
+    
+    public Hospital(String hospitalname, String hospitalcity, String hospitalcommunity){
+        this.hospitalcity = hospitalcity;
+        this.hospitalcommunity = hospitalcommunity;
+        this.hospitalname = hospitalname;
+    }
+
+    public String getHospitalname() {
+        return hospitalname;
+    }
+
+    public void setHospitalname(String hospitalname) {
+        this.hospitalname = hospitalname;
+    }
+
+    public String getHospitalcity() {
+        return hospitalcity;
+    }
+
+    public void setHospitalcity(String hospitalcity) {
+        this.hospitalcity = hospitalcity;
+    }
+
+    public String getHospitalcommunity() {
+        return hospitalcommunity;
+    }
+
+    public void setHospitalcommunity(String hospitalcommunity) {
+        this.hospitalcommunity = hospitalcommunity;
+    }
+    @Override
+    public String toString()
+    {
+        return hospitalname;
+    }
+    
 }
