@@ -124,11 +124,11 @@ public class AddCity extends javax.swing.JPanel {
         
         }
         
-        City c = citylist.addNewCity();
-        
-        c.setCityname(name);
-        c.setCityid(id);
-        c.setCitycode(code);
+        //City c = citylist.addNewCity();
+//        
+//        c.setCityname(name);
+//        c.setCityid(id);
+//        c.setCitycode(code);
         
         
         

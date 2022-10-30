@@ -11,8 +11,21 @@ import java.util.ArrayList;
  * @author snehal
  */
 public class CityDirectory {
-       private ArrayList<City> citylist;
+    public static CityDirectory cityinstance = null;
+    public ArrayList<City> citylist = new ArrayList<City>();
 
+    
+    
+    public static CityDirectory getCityinstance(){
+        if(cityinstance == null)
+        {
+            cityinstance = new CityDirectory();
+            return cityinstance;
+        }
+        return cityinstance;
+    }
+    
+    
     public CityDirectory() {
         this.citylist = new ArrayList<City>();
     }
@@ -28,11 +41,9 @@ public class CityDirectory {
    
     
 
-    public City addNewCity()
+    public void addNewCity(City newcity)
     {
-        City newcity = new City();
         citylist.add(newcity);
-        return newcity;
        
     }
     public void deleteCity(City c){

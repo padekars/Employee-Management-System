@@ -43,6 +43,11 @@ public class City {
         this.Citycode = Citycode;
     }
     
+    @Override
+    public String toString()
+    {
+        return Cityid;
+    }
     
     
 }

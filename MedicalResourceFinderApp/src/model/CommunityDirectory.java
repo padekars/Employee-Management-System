@@ -11,7 +11,19 @@ import java.util.ArrayList;
  * @author snehal
  */
 public class CommunityDirectory {
-    private ArrayList<Community> communitylist;
+    private static CommunityDirectory communityinstance = null;
+    private ArrayList<Community> communitylist = new ArrayList<Community>();
+    
+    
+    public static CommunityDirectory getCommunityinstance(){
+        if(communityinstance == null)
+        {
+            communityinstance = new CommunityDirectory();
+            return communityinstance;
+        }
+        return communityinstance;
+    }
+    
     
     public CommunityDirectory(){
         communitylist = new ArrayList<Community>();
@@ -24,12 +36,11 @@ public class CommunityDirectory {
     public void setCommunitylist(ArrayList<Community> communitylist) {
         this.communitylist = communitylist;
     }
-    public Community addNewCommunity()
+    
+    public void addNewCommunity(Community c)
     {
-        Community newcommunity = new Community();
-        communitylist.add(newcommunity);
-        return newcommunity;
-       
+        communitylist.add(c);
+        
     }
     public void deleteCommunity(Community c){
         communitylist.remove(c);
