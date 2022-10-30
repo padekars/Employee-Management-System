@@ -13,11 +13,9 @@ public class Patient extends Person{
    String hb;
    String bloodgroup;
    
-   public Patient(String personid, String personname, int personage, String bloodpressure, String hb, String bloodgroup)
+   public Patient(String personid, String personname, int personage, String bloodgroup)
    {
        super(personid,personname,personage);
-       this.bloodpressure = bloodpressure;
-       this.hb = hb;
        this.bloodgroup = bloodgroup;
    }
 

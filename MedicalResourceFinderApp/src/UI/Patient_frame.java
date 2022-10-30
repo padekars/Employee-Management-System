@@ -53,10 +53,6 @@ public class Patient_frame extends javax.swing.JFrame {
         txtbg = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        txtbp = new javax.swing.JTextField();
-        txthb = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,10 +125,6 @@ public class Patient_frame extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Patient Bloodpresssure");
-
-        jLabel8.setText("Patient HB");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,24 +135,20 @@ public class Patient_frame extends javax.swing.JFrame {
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(148, 148, 148)
+                            .addGap(173, 173, 173)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel4)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel1)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel8))
+                                .addComponent(jLabel6))
                             .addGap(83, 83, 83)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txtpid, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
                                 .addComponent(txtpname)
                                 .addComponent(txtpage)
                                 .addComponent(txtpass)
-                                .addComponent(txtbg)
-                                .addComponent(txtbp)
-                                .addComponent(txthb)))
+                                .addComponent(txtbg)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(21, 21, 21)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -197,19 +185,11 @@ public class Patient_frame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtbp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txthb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(txtbg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
@@ -233,9 +213,9 @@ public class Patient_frame extends javax.swing.JFrame {
         int age = Integer.parseInt(txtpage.getText());
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //String dob = sdf.format(pdob.getDate());
-        String bg = txtbg.getText();
-        String bp = txtbp.getText();
-        String hb = txthb.getText();
+         String bg = txtbg.getText();
+//        String bp = txtbp.getText();
+//        String hb = txthb.getText();
 
         //Check if all fields are filled or not
         if(txtpname.equals("") ||
@@ -266,7 +246,7 @@ public class Patient_frame extends javax.swing.JFrame {
 
         }
 
-        Patient p = new Patient(id,name,age,bp,hb,bg);
+        Patient p = new Patient(id,name,age,bg);
         PatientDirectory.getPatientinstance().addNewPatient(p);
         //newpatientdirectory.addNewPatient(p);
 
@@ -282,10 +262,10 @@ public class Patient_frame extends javax.swing.JFrame {
         txtpage.setText("");
         //pdob.setDate(null);
         txtbg.setText("");
-        txtpass.setText("");
-        txtbp.setText("");
-        txthb.setText("");
-        
+//        txtpass.setText("");
+//        txtbp.setText("");
+//        txthb.setText("");
+//        
         populateTable();
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -460,13 +440,9 @@ public class Patient_frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable patienttable;
     private javax.swing.JTextField txtbg;
-    private javax.swing.JTextField txtbp;
-    private javax.swing.JTextField txthb;
     private javax.swing.JTextField txtpage;
     private javax.swing.JPasswordField txtpass;
     private javax.swing.JTextField txtpid;
