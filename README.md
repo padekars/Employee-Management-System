@@ -15,6 +15,11 @@
 
 ![HospitalAdmin](https://user-images.githubusercontent.com/114442288/198924742-56896435-26a9-4c13-abaf-1cec5bdfcbb4.png)
 
+![DoctorLogin](https://user-images.githubusercontent.com/114442288/198926344-250dda67-a5be-44b4-8a21-fba921d17550.png)
+
+![PatientLogin](https://user-images.githubusercontent.com/114442288/198926427-4d98c506-c1dd-4273-9c83-4f7bdfef3142.png)
+
+
 
 
 
