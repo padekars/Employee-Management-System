@@ -9,13 +9,12 @@ package model;
  * @author snehal
  */
 public class Patient extends Person{
-   String bloodpressure;
-   String hb;
+  
    String bloodgroup;
    
-   public Patient(String personid, String personname, int personage, String bloodgroup)
+   public Patient(String personid, String personname, int personage, String bloodgroup,String personpass)
    {
-       super(personid,personname,personage);
+       super(personid,personname,personage,personpass);
        this.bloodgroup = bloodgroup;
    }
 
@@ -27,20 +26,6 @@ public class Patient extends Person{
         this.bloodgroup = bloodgroup;
     }
 
-    public String getBloodpressure() {
-        return bloodpressure;
-    }
-
-    public void setBloodpressure(String bloodpressure) {
-        this.bloodpressure = bloodpressure;
-    }
-
-    public String getHb() {
-        return hb;
-    }
-
-    public void setHb(String hb) {
-        this.hb = hb;
-    }
+   
  
 }

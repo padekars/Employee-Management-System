@@ -188,7 +188,7 @@ public class EncounterFrame extends javax.swing.JFrame {
                                     .addComponent(dcombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(edate)
                                     .addComponent(txteid))
-                                .addGap(132, 132, 132)
+                                .addGap(183, 183, 183)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel5)
                                     .addComponent(jLabel6)
@@ -257,26 +257,35 @@ public class EncounterFrame extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+                
+        int selectedrowindex = encountertable.getSelectedRow();
 
+        if (selectedrowindex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
         
-        //
-        //        DefaultTableModel model = (DefaultTableModel)communitytable.getModel();
-        //        City selectedemployee = (City) model.getValueAt(selectedrowindex,0);
-        //        CityDirectory.getCityinstance().deleteCity(selectedemployee);
-        //
-        //        JOptionPane.showMessageDialog(this,"Community record deleted.");
-        //
-        //        populateTable();
+        
+                DefaultTableModel model = (DefaultTableModel)encountertable.getModel();
+                VitalSigns selectedemployee = (VitalSigns) model.getValueAt(selectedrowindex,0);
+                VitalsignsDirectory.getVitalinstance().deleteVital(selectedemployee);
+        
+                JOptionPane.showMessageDialog(this,"Community record deleted.");
+        
+                populateTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        CityFrame cf = new CityFrame();
+        
         String id = txteid.getText();
-        String oxy = txtoxy.getText();
-        String temp = txttemp.getText();
+        int oxy = Integer.parseInt(txtoxy.getText());
+        int temp = Integer.parseInt(txttemp.getText());
         String bp = bpcombo.getSelectedItem().toString();
         String hr = hrcombo.getSelectedItem().toString();
+        String date = edate.getText();
+        String p = pcombo.getSelectedItem().toString();
+        String d = dcombo.getSelectedItem().toString();
 
         //Check if all fields are filled or not
         if(
@@ -287,45 +296,74 @@ public class EncounterFrame extends javax.swing.JFrame {
             return;
 
         }
-        //        Community c = new Community("","","",id,name,code);
-        //        CommunityDirectory.getCommunityinstance().addNewCommunity(c);
-        //
-        //        c.setCityname(name);
-        //        c.setCityid(id);
-        //        c.setCitycode(code);
+         
 
-        JOptionPane.showMessageDialog(this,"New City added!");
+        VitalSigns v = new VitalSigns(id,date, p,d,bp,hr,oxy,temp);
+        VitalsignsDirectory.getVitalinstance().addNewVitals(v);
+        //newpatientdirectory.addNewPatient(p);
+
+        v.setEncounterID(id);
+        v.setPatientname(p);
+        v.setDoctorname(d);
+        v.setEncounterDate(date);
+        v.setBloodpressure(bp);
+        v.setHeartrate(hr);
+        v.setOxygenlevel(oxy);
+        v.setTemperature(temp);
+        
+        
+        
+        JOptionPane.showMessageDialog(this,"New Encounter added!");
         // Clear all text fields after adding a city record
         txteid.setText("");
         txtoxy.setText("");
         txttemp.setText("");
+        edate.setText("");
         
-        //populateTable();
+        populateTable();
     
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
-        // DefaultTableModel tblmodel = (DefaultTableModel) communitytable.getModel();
+        DefaultTableModel tblmodel = (DefaultTableModel) encountertable.getModel();
         if(encountertable.getSelectedRowCount()==1){
 
             String empid = txteid.getText();
-            String oxy = txtoxy.getText();
-            String temp = txttemp.getText();
+            String p = pcombo.getSelectedItem().toString();
+            String d = dcombo.getSelectedItem().toString();
+            String date = edate.getText();
+            int oxy = Integer.parseInt(txtoxy.getText());
+            int temp = Integer.parseInt(txttemp.getText());
+            String bp = bpcombo.getSelectedItem().toString();
+            String hr = hrcombo.getSelectedItem().toString();
+            
 
-            //            tblmodel.setValueAt(empid, communitytable.getSelectedRow(), 0);
-            //            tblmodel.setValueAt(name, communitytable.getSelectedRow(), 1);
-            //            tblmodel.setValueAt(code, communitytable.getSelectedRow(), 2);
-            //
-            //            for(City e : CityDirectory.getCityinstance().getCitylist()){
-                //
-                //                if(e.getCityid().equals(empid)){
-                    //                    e.setCityname(name);
-                    //                    e.setCitycode(code);
-                    //
-                    //                }
-                //            }
+                        tblmodel.setValueAt(empid, encountertable.getSelectedRow(), 0);
+                        tblmodel.setValueAt(p, encountertable.getSelectedRow(), 1);
+                        tblmodel.setValueAt(d, encountertable.getSelectedRow(), 2);
+                        tblmodel.setValueAt(date, encountertable.getSelectedRow(), 3);
+                        tblmodel.setValueAt(bp, encountertable.getSelectedRow(), 4);
+                        tblmodel.setValueAt(hr, encountertable.getSelectedRow(), 5);
+                        tblmodel.setValueAt(oxy, encountertable.getSelectedRow(), 6);
+                        tblmodel.setValueAt(temp, encountertable.getSelectedRow(), 7);
+            
+                        for(VitalSigns v : VitalsignsDirectory.getVitalinstance().getVitallist()){
+                
+                                if(v.getEncounterID().equals(empid)){
+
+                                        v.setEncounterID(empid);
+                                        v.setPatientname(p);
+                                        v.setDoctorname(d);
+                                        v.setEncounterDate(date);
+                                        v.setBloodpressure(bp);
+                                        v.setHeartrate(hr);
+                                        v.setOxygenlevel(oxy);
+                                        v.setTemperature(temp);
+                    
+                                    }
+                            }
             JOptionPane.showMessageDialog(this,"Community record updated successfully!!.");
         }
         else{
@@ -411,11 +449,16 @@ private void populateTable()
     {
         DefaultTableModel model = (DefaultTableModel)encountertable.getModel();
         model.setRowCount(0);
-        for(Community p : CommunityDirectory.getCommunityinstance().getCommunitylist()){
+        for(VitalSigns p : VitalsignsDirectory.getVitalinstance().getVitallist()){
             Object[] row = new Object[10];
             row[0] = p;
-            row[1] = p.getCommunityname();
-            row[2] = p.getCommunitycode();
+            row[1] = p.getPatientname();
+            row[2] = p.getDoctorname();
+            row[3] = p.getEncounterDate();
+            row[4] = p.getBloodpressure();
+            row[5] = p.getHeartrate();
+            row[6] = p.getOxygenlevel();
+            row[7] = p.getTemperature(); 
             
             model.addRow(row);
         }

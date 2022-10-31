@@ -9,12 +9,21 @@ package model;
  * @author snehal
  */
 public class Hospital {
-    
+    String hospitalid;
     String hospitalname;
     String hospitalcity;
     String hospitalcommunity;
+
+    public String getHospitalid() {
+        return hospitalid;
+    }
+
+    public void setHospitalid(String hospitalid) {
+        this.hospitalid = hospitalid;
+    }
     
-    public Hospital(String hospitalname, String hospitalcity, String hospitalcommunity){
+    public Hospital(String hospitalid,String hospitalname, String hospitalcity, String hospitalcommunity){
+        this.hospitalid = hospitalid;
         this.hospitalcity = hospitalcity;
         this.hospitalcommunity = hospitalcommunity;
         this.hospitalname = hospitalname;

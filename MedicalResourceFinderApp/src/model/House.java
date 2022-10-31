@@ -9,5 +9,35 @@ package model;
  * @author snehal
  */
 public class House {
+    String Housid;
+    String Housename;
+    String Housestreet;
+
+    public String getHousestreet() {
+        return Housestreet;
+    }
+
+    public void setHousestreet(String Housestreet) {
+        this.Housestreet = Housestreet;
+    }
+
+    public String getHousid() {
+        return Housid;
+    }
+
+    public void setHousid(String Housid) {
+        this.Housid = Housid;
+    }
+
+    public String getHousename() {
+        return Housename;
+    }
+
+    public void setHousename(String Housename) {
+        this.Housename = Housename;
+    }
+
+    
+    
     
 }

@@ -95,6 +95,7 @@ public class HouseFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Add House ");
 
         jLabel2.setText("House ID");
@@ -109,6 +110,7 @@ public class HouseFrame extends javax.swing.JFrame {
 
         combocommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jButton6.setForeground(new java.awt.Color(0, 0, 255));
         jButton6.setText("BACK");
         jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +119,7 @@ public class HouseFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setForeground(new java.awt.Color(0, 0, 255));
         jButton4.setText("Update");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +127,7 @@ public class HouseFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setForeground(new java.awt.Color(0, 0, 255));
         jButton7.setText("Delete");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +135,7 @@ public class HouseFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setForeground(new java.awt.Color(0, 0, 255));
         jButton8.setText("Save");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

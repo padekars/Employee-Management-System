@@ -13,8 +13,8 @@ public class Doctor extends Person {
     String dcity;
     String dcommunity;
     String dhos;
-    public Doctor(String personid,String personname,int personage,String dspecz, String dcity, String dcommunity, String dhos){
-        super(personid,personname,personage);
+    public Doctor(String personid,String personname,int personage,String personpass,String dspecz, String dcity, String dcommunity, String dhos){
+        super(personid,personname,personage,personpass);
         this.dspecz = dspecz;
         this.dcity = dcity;
         this.dcommunity = dcommunity;

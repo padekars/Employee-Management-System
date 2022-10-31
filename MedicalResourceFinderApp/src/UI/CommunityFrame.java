@@ -75,6 +75,11 @@ public class CommunityFrame extends javax.swing.JFrame {
                 "Community Id", "Community Name", "Community Code"
             }
         ));
+        communitytable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                communitytableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(communitytable);
 
         jButton5.setText("BACK");
@@ -224,7 +229,7 @@ public class CommunityFrame extends javax.swing.JFrame {
         //        c.setCityid(id);
         //        c.setCitycode(code);
 
-        JOptionPane.showMessageDialog(this,"New City added!");
+        JOptionPane.showMessageDialog(this,"New Community added!");
         // Clear all text fields after adding a city record
         txtcommunitycode.setText("");
         txtcommunityid.setText("");
@@ -249,9 +254,10 @@ public class CommunityFrame extends javax.swing.JFrame {
 
             for(Community e : CommunityDirectory.getCommunityinstance().getCommunitylist()){
 
-                if(e.getCityid().equals(empid)){
-                    e.setCityname(name);
-                    e.setCitycode(code);
+                if(e.getCommunityid().equals(empid)){
+                    e.setCommunityname(name);
+                    e.setCommunitycode(code);
+                    e.setCityname(city);
 
                 }
             }
@@ -288,6 +294,24 @@ public class CommunityFrame extends javax.swing.JFrame {
 
         populateTable();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void communitytableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_communitytableMouseClicked
+        // TODO add your handling code here:
+        
+              // TODO add your handling code here:
+        DefaultTableModel tblmodel = (DefaultTableModel) communitytable.getModel();
+        
+        String tblid = tblmodel.getValueAt(communitytable.getSelectedRow(),0).toString();
+        String tblname = tblmodel.getValueAt(communitytable.getSelectedRow(),1).toString();
+        String tblcode = tblmodel.getValueAt(communitytable.getSelectedRow(),2).toString();
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //String dob = sdf.format(pdob.getDate());
+        //String tbldob = tblmodel.getValueAt(jTable1.getSelectedRow(),3).toString();
+
+        txtcommunityname.setText(tblname);
+        txtcommunityid.setText(tblid);
+        txtcommunitycode.setText(tblcode);
+    }//GEN-LAST:event_communitytableMouseClicked
 
     /**
      * @param args the command line arguments

@@ -171,6 +171,9 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Add House "/>
       </Properties>
     </Component>
@@ -230,6 +233,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton6">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BACK"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
@@ -243,6 +249,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton4">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
       <Events>
@@ -251,6 +260,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton7">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Delete"/>
       </Properties>
       <Events>
@@ -259,6 +271,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="jButton8">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="0" red="0" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Save"/>
       </Properties>
       <Events>

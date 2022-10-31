@@ -15,7 +15,6 @@ public class CityDirectory {
     public ArrayList<City> citylist = new ArrayList<City>();
 
     
-    
     public static CityDirectory getCityinstance(){
         if(cityinstance == null)
         {
@@ -27,7 +26,7 @@ public class CityDirectory {
     
     
     public CityDirectory() {
-        this.citylist = new ArrayList<City>();
+        //this.citylist = new ArrayList<City>();
     }
 
     public ArrayList<City> getCitylist() {

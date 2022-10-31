@@ -9,6 +9,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.Doctor;
 import model.DoctorDirectory;
+import model.Patient;
+import model.PatientDirectory;
 
 /**
  *
@@ -40,15 +42,12 @@ public class MainFrame extends javax.swing.JFrame {
         txtusername = new javax.swing.JTextField();
         txtpassword = new javax.swing.JPasswordField();
         jButton6 = new javax.swing.JButton();
-        txtsearch = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        doctortable = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(204, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to Medical Resource Finder Application");
 
@@ -59,6 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         jButton6.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        jButton6.setForeground(new java.awt.Color(0, 0, 255));
         jButton6.setText("Login");
         jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -67,68 +67,26 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
 
-        txtsearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtsearchKeyReleased(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtsearchKeyTyped(evt);
-            }
-        });
-
-        doctortable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Doctor ID", "Doctor Name", "Doctor Age", "Doctor Specz"
-            }
-        ));
-        doctortable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                doctortableMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(doctortable);
-
-        jLabel4.setText("Search");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(187, 187, 187)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(188, 188, 188)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtusername)
-                                .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addGap(108, 108, 108)
-                        .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 268, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(187, 187, 187)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtusername)
+                        .addComponent(txtpassword, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,13 +103,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(txtpassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(53, 53, 53)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
 
         pack();
@@ -163,6 +115,17 @@ public class MainFrame extends javax.swing.JFrame {
         String username = txtusername.getText();
         String password = txtpassword.getText();
         
+        int i =0;
+        for(Patient p :PatientDirectory.getPatientinstance().getPatientlist())
+        {
+            if(p.getPersonid().equals(username) && p.getPersonpass().equals(password)){
+                i=1;
+            }
+            else
+            {
+                i=0;
+            }
+        }
         // user roles here
         //system admin
         //username - system
@@ -192,48 +155,16 @@ public class MainFrame extends javax.swing.JFrame {
             CommunityAdmin ca = new CommunityAdmin();
             ca.setVisible(true);
         }
+        else if(i==1){
+            PatientLogin pl = new PatientLogin();
+            pl.setVisible(true);
+            
+        }
         else{
             JOptionPane.showMessageDialog(this,"Incorrect Username or Password!");
         }
         
     }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void doctortableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doctortableMouseClicked
-        // TODO add your handling code here:
-
-//        DefaultTableModel tblmodel = (DefaultTableModel) doctortable.getModel();
-//
-//        String tblid = tblmodel.getValueAt(doctortable.getSelectedRow(),0).toString();
-//        String tblname = tblmodel.getValueAt(doctortable.getSelectedRow(),1).toString();
-//        String tblspecz = tblmodel.getValueAt(doctortable.getSelectedRow(),2).toString();
-//        String tblage = tblmodel.getValueAt(doctortable.getSelectedRow(),3).toString();
-//        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//        //String dob = sdf.format(pdob.getDate());
-//        //String tbldob = tblmodel.getValueAt(jTable1.getSelectedRow(),3).toString();
-//
-//        txtdname.setText(tblname);
-//        txtdid.setText(tblid);
-//        txtdage.setText(tblage);
-//        dspecz.setSelectedItem(tblspecz);
-        //dob.setDate(tbldob);
-    }//GEN-LAST:event_doctortableMouseClicked
-
-    private void txtsearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyReleased
-        // TODO add your handling code here:
-        
-        
-        DefaultTableModel model = (DefaultTableModel)doctortable.getModel();
-        String searchkeyword = "(?i)"+txtsearch.getText();
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        doctortable.setRowSorter(tr);
-        tr.setRowFilter(RowFilter.regexFilter(searchkeyword));
-        
-        
-    }//GEN-LAST:event_txtsearchKeyReleased
-
-    private void txtsearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtsearchKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtsearchKeyTyped
 
     /**
      * @param args the command line arguments
@@ -272,32 +203,14 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable doctortable;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPasswordField txtpassword;
-    private javax.swing.JTextField txtsearch;
     private javax.swing.JTextField txtusername;
     // End of variables declaration//GEN-END:variables
 
-    private void populateTable()
-    {
-        DefaultTableModel model = (DefaultTableModel)doctortable.getModel();
-        model.setRowCount(0);
-        for(Doctor p : DoctorDirectory.getDoctorinstance().getDoctorlist()){
-            Object[] row = new Object[10];
-            row[0] = p;
-            row[1] = p.getPersonname();
-            row[2] = p.getDspecz();
-            row[3] = p.getPersonage();
-            
-            model.addRow(row);
-        }
-    }
-
+  
 
 }

@@ -26,7 +26,7 @@ public class CommunityDirectory {
     
     
     public CommunityDirectory(){
-        communitylist = new ArrayList<Community>();
+        //communitylist = new ArrayList<Community>();
     }
 
     public ArrayList<Community> getCommunitylist() {

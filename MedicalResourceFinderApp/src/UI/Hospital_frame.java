@@ -69,6 +69,8 @@ public class Hospital_frame extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         hcity = new javax.swing.JComboBox<>();
         hcommunity = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        txthid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,8 +104,18 @@ public class Hospital_frame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(hospitaltable);
 
         jButton3.setText("Update");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("BACK");
         jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -116,6 +128,8 @@ public class Hospital_frame extends javax.swing.JFrame {
         hcity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         hcommunity.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel5.setText("Hospital ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -130,12 +144,14 @@ public class Hospital_frame extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel2)
-                                .addComponent(jLabel4))
+                                .addComponent(jLabel4)
+                                .addComponent(jLabel5))
                             .addGap(94, 94, 94)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(txthname, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                                 .addComponent(hcity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(hcommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(hcommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txthid)))
                         .addGroup(layout.createSequentialGroup()
                             .addGap(19, 19, 19)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -157,7 +173,11 @@ public class Hospital_frame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jLabel1)
-                .addGap(71, 71, 71)
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txthid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txthname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -169,7 +189,7 @@ public class Hospital_frame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(hcommunity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton3)
@@ -186,6 +206,7 @@ public class Hospital_frame extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String id = txthid.getText();
         String name = txthname.getText();
         //String dob = sdf.format(pdob.getDate());
         String city = hcity.getSelectedItem().toString();
@@ -207,10 +228,10 @@ public class Hospital_frame extends javax.swing.JFrame {
         
         
 
-        Hospital p = new Hospital(name,city,community);
+        Hospital p = new Hospital(id,name,city,community);
         HospitalDirectory.getHospinstance().addNewHospital(p);
         //newpatientdirectory.addNewPatient(p);
-
+        p.setHospitalid(id);
         p.setHospitalname(name);
         p.setHospitalcity(city);
         p.setHospitalcommunity(community);
@@ -233,6 +254,67 @@ public class Hospital_frame extends javax.swing.JFrame {
 
         dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        DefaultTableModel tblmodel = (DefaultTableModel) hospitaltable.getModel();
+        if(hospitaltable.getSelectedRowCount()==1){
+
+            String name = txthname.getText();
+            String id = txthid.getText();
+            String city = hcity.getSelectedItem().toString();
+            String comm = hcommunity.getSelectedItem().toString();
+            tblmodel.setValueAt(id, hospitaltable.getSelectedRow(), 0);
+            tblmodel.setValueAt(name, hospitaltable.getSelectedRow(), 1);
+            tblmodel.setValueAt(city, hospitaltable.getSelectedRow(), 2);
+            tblmodel.setValueAt(comm, hospitaltable.getSelectedRow(), 3);
+
+            for(Hospital e : HospitalDirectory.getHospinstance().getHospitallist()){
+
+                if(e.getHospitalid().equals(id)){
+                    e.setHospitalname(name);
+                    e.setHospitalcity(city);
+                    e.setHospitalcommunity(comm);
+
+                }
+            }
+            JOptionPane.showMessageDialog(this,"Hospital record updated successfully!!.");
+        }
+        else{
+            if(hospitaltable.getRowCount()==0){
+                //if table is empty
+                JOptionPane.showMessageDialog(this,"Table is empty.");
+            }
+            else{
+                //if row is not selected or multiple row are selected
+                JOptionPane.showMessageDialog(this,"Please select a single hospital record to update");
+            }
+
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        
+           int selectedrowindex = hospitaltable.getSelectedRow();
+
+        if (selectedrowindex < 0){
+            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+            return;
+        }
+
+        DefaultTableModel model = (DefaultTableModel)hospitaltable.getModel();
+        Hospital selectedemployee = (Hospital) model.getValueAt(selectedrowindex,0);
+        HospitalDirectory.getHospinstance().deleteHospital(selectedemployee);
+
+        JOptionPane.showMessageDialog(this,"Hospital record deleted.");
+
+        populateTable();
+        
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,7 +363,9 @@ public class Hospital_frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField txthid;
     private javax.swing.JTextField txthname;
     // End of variables declaration//GEN-END:variables
 private void populateTable()

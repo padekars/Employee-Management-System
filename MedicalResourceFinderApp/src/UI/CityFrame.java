@@ -50,6 +50,7 @@ public class CityFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton1.setForeground(new java.awt.Color(0, 0, 255));
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,6 +59,7 @@ public class CityFrame extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 255));
         jLabel1.setText("Add City");
 
         jLabel2.setText("City ID");
@@ -77,8 +79,14 @@ public class CityFrame extends javax.swing.JFrame {
                 "City Id", "City Name", "City Code"
             }
         ));
+        citytable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                citytableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(citytable);
 
+        jButton5.setForeground(new java.awt.Color(0, 0, 255));
         jButton5.setText("BACK");
         jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +95,7 @@ public class CityFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setForeground(new java.awt.Color(0, 0, 255));
         jButton2.setText("Update");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +103,7 @@ public class CityFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setForeground(new java.awt.Color(0, 0, 255));
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,9 +196,9 @@ public class CityFrame extends javax.swing.JFrame {
         City c = new City(id,name,code);
         CityDirectory.getCityinstance().addNewCity(c);
 //
-//        c.setCityname(name);
-//        c.setCityid(id);
-//        c.setCitycode(code);
+      c.setCityname(name);
+      c.setCityid(id);
+      c.setCitycode(code);
 
         JOptionPane.showMessageDialog(this,"New City added!");
         // Clear all text fields after adding a city record
@@ -240,11 +250,13 @@ public class CityFrame extends javax.swing.JFrame {
             }
 
         }
+        
+        citytable.clearSelection();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-
+        
         int selectedrowindex = citytable.getSelectedRow();
 
         if (selectedrowindex < 0){
@@ -256,11 +268,30 @@ public class CityFrame extends javax.swing.JFrame {
         City selectedemployee = (City) model.getValueAt(selectedrowindex,0);
         CityDirectory.getCityinstance().deleteCity(selectedemployee);
 
-        JOptionPane.showMessageDialog(this,"Doctor record deleted.");
+        JOptionPane.showMessageDialog(this,"City record deleted.");
 
         populateTable();
 
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void citytableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_citytableMouseClicked
+        // TODO add your handling code here:
+        
+        
+               // TODO add your handling code here:
+        DefaultTableModel tblmodel = (DefaultTableModel) citytable.getModel();
+        
+        String tblid = tblmodel.getValueAt(citytable.getSelectedRow(),0).toString();
+        String tblname = tblmodel.getValueAt(citytable.getSelectedRow(),1).toString();
+        String tblcode = tblmodel.getValueAt(citytable.getSelectedRow(),2).toString();
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //String dob = sdf.format(pdob.getDate());
+        //String tbldob = tblmodel.getValueAt(jTable1.getSelectedRow(),3).toString();
+
+        txtcityname.setText(tblname);
+        txtcityid.setText(tblid);
+        txtcitycode.setText(tblcode);
+    }//GEN-LAST:event_citytableMouseClicked
 
     /**
      * @param args the command line arguments

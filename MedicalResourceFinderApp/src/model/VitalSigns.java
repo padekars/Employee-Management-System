@@ -41,10 +41,16 @@ public class VitalSigns extends Encounter{
     public String getHeartrate() {
         return heartrate;
     }
+    
 
     public void setHeartrate(String heartrate) {
         this.heartrate = heartrate;
     }
-
+    public VitalSigns(String EncounterID, String EncounterDate, String Patientname,String Doctorname, String bloodpressure, String heartrate, int oxygenlevel, int temperature){
+        super( EncounterID,  EncounterDate,  Patientname, Doctorname);
+        this.bloodpressure = bloodpressure;
+        this.heartrate = heartrate;
+        this.oxygenlevel = oxygenlevel;
+    }
     
 }

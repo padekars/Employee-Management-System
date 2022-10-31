@@ -21,11 +21,12 @@ public class Person {
     String House;
     String personpass;
     
-    public Person (String personid, String personname, int personage)
+    public Person (String personid, String personname, int personage,String personpass)
     {
         this.personid = personid;
         this.personname = personname;
         this.personage = personage;
+        this.personpass = personpass;
         
     }
 

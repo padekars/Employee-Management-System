@@ -4,10 +4,22 @@
  */
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author snehal
  */
 public class EncounterDirectory {
+    
+    public ArrayList<Encounter> encounterlist = new ArrayList<Encounter>();
+
+    public ArrayList<Encounter> getEncounterlist() {
+        return encounterlist;
+    }
+
+    public void setEncounterlist(ArrayList<Encounter> encounterlist) {
+        this.encounterlist = encounterlist;
+    }
     
 }

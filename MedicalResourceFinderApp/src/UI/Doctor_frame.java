@@ -50,6 +50,18 @@ public class Doctor_frame extends javax.swing.JFrame {
         }
         
         combocommunity.setModel(new javax.swing.DefaultComboBoxModel<>(communityArray));
+        
+        
+        int hosArraySize = HospitalDirectory.getHospinstance().getHospitallist().size();
+        String[] hosArray = new String[hosArraySize];
+        int itr2 = 0;
+        
+        for(Hospital c: HospitalDirectory.getHospinstance().getHospitallist()) {
+            hosArray[itr2++] = c.getHospitalname();
+        }
+        
+        combohosp.setModel(new javax.swing.DefaultComboBoxModel<>(hosArray));
+        
     }
 
     /**
@@ -85,6 +97,8 @@ public class Doctor_frame extends javax.swing.JFrame {
         combocity = new javax.swing.JComboBox<>();
         combocommunity = new javax.swing.JComboBox<>();
         combohosp = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        dpass = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -199,22 +213,20 @@ public class Doctor_frame extends javax.swing.JFrame {
 
         combohosp.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel9.setText("Password");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 54, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(192, 192, 192)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addGap(119, 119, 119)
-                                .addComponent(jButton3))
-                            .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(242, 242, 242)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -224,7 +236,8 @@ public class Doctor_frame extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(jLabel5)
                             .addComponent(jLabel7)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9))
                         .addGap(65, 65, 65)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(lbliderror)
@@ -236,14 +249,19 @@ public class Doctor_frame extends javax.swing.JFrame {
                             .addComponent(lblageerror)
                             .addComponent(combocity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(combocommunity, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(combohosp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(212, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34))
+                            .addComponent(combohosp, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dpass)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(133, 133, 133)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jButton2)
+                                .addGap(119, 119, 119)
+                                .addComponent(jButton3))
+                            .addComponent(jLabel1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,7 +278,7 @@ public class Doctor_frame extends javax.swing.JFrame {
                 .addComponent(lblnameerror)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 63, Short.MAX_VALUE)
+                        .addGap(0, 57, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(dspecz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -282,20 +300,24 @@ public class Doctor_frame extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
                             .addComponent(combohosp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3))
-                        .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5))
+                        .addGap(25, 25, 25))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtdname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(dpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton5))
         );
 
         pack();
@@ -321,7 +343,7 @@ public class Doctor_frame extends javax.swing.JFrame {
         String dcity = combocity.getSelectedItem().toString();
         String dcommunity = combocommunity.getSelectedItem().toString();
         String dhos = combohosp.getSelectedItem().toString();
-        //String level = txtLevel.getText();
+        String dpas = dpass.getText();
         //String teaminfo = txtTeamInfo.getText();
         //String phno = txtPhno.getText();
         //String email = txtEmail.getText();
@@ -351,7 +373,7 @@ public class Doctor_frame extends javax.swing.JFrame {
 
         }
 
-        Doctor d = new Doctor(id,name,age,specz,dcity,dcommunity,dhos);
+        Doctor d = new Doctor(id,name,age,dpas,specz,dcity,dcommunity,dhos);
         DoctorDirectory.getDoctorinstance().addNewDoctor(d);
         //d.setPersonname(name);
         //d.setPersonid(id);
@@ -553,6 +575,7 @@ public class Doctor_frame extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combocommunity;
     private javax.swing.JComboBox<String> combohosp;
     private javax.swing.JTable doctortable;
+    private javax.swing.JTextField dpass;
     private javax.swing.JComboBox<String> dspecz;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -566,6 +589,7 @@ public class Doctor_frame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblageerror;
     private javax.swing.JLabel lbliderror;

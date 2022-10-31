@@ -75,7 +75,6 @@ public class Patient_frame extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         lbliderror = new javax.swing.JLabel();
         lblnameerror = new javax.swing.JLabel();
         lblageerror = new javax.swing.JLabel();
@@ -167,13 +166,6 @@ public class Patient_frame extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("Create Encounter");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         lbliderror.setFont(new java.awt.Font("Helvetica Neue", 0, 12)); // NOI18N
         lbliderror.setForeground(new java.awt.Color(255, 0, 0));
 
@@ -235,9 +227,7 @@ public class Patient_frame extends javax.swing.JFrame {
                 .addComponent(jButton2)
                 .addGap(134, 134, 134)
                 .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(55, 55, 55))
+                .addGap(55, 297, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,8 +272,7 @@ public class Patient_frame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5))
+                    .addComponent(jButton3))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -303,7 +292,7 @@ public class Patient_frame extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //String dob = sdf.format(pdob.getDate());
          String bg = combobg.getSelectedItem().toString();
-//        String bp = txtbp.getText();
+    String ppass = txtpass.getText();
 //        String hb = txthb.getText();
 
         //Check if all fields are filled or not
@@ -335,7 +324,7 @@ public class Patient_frame extends javax.swing.JFrame {
 
         }
 
-        Patient p = new Patient(id,name,age,bg);
+        Patient p = new Patient(id,name,age,bg,ppass);
         PatientDirectory.getPatientinstance().addNewPatient(p);
         //newpatientdirectory.addNewPatient(p);
 
@@ -463,17 +452,6 @@ public class Patient_frame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        
-        
-        
-        EncounterFrame ef = new EncounterFrame();
-        ef.setVisible(true);
-        
-        
-    }//GEN-LAST:event_jButton5ActionPerformed
-
     private void txtpidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtpidKeyReleased
         // TODO add your handling code here:
         
@@ -562,7 +540,6 @@ public class Patient_frame extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
