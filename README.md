@@ -4,6 +4,9 @@
 
 ###Class Diagram
 
+####Sequence Diagram
+![SequenceAdmin](https://user-images.githubusercontent.com/114442288/198919133-914bbdee-d526-41ec-96ab-0a7cee6f6a7a.png)
+
 
 
 The system has 5 login options - System Admin, Community Admin, Hospital Admin, Patient and Doctor
