@@ -12,6 +12,12 @@ public class House {
     String Housid;
     String Housename;
     String Housestreet;
+    
+    public House(String Houseid, String Housename, String Housestreet){
+        this.Housid = Houseid;
+        this.Housename = Housename;
+        this.Housestreet = Housestreet;
+    }
 
     public String getHousestreet() {
         return Housestreet;

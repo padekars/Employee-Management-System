@@ -6,6 +6,10 @@ package UI;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.House;
+import model.HouseDirectory;
+import model.Patient;
+import model.PatientDirectory;
 
 /**
  *
@@ -18,6 +22,7 @@ public class HouseFrame extends javax.swing.JFrame {
      */
     public HouseFrame() {
         initComponents();
+        populateTable();
     }
 
     /**
@@ -45,11 +50,9 @@ public class HouseFrame extends javax.swing.JFrame {
         combocity = new javax.swing.JComboBox<>();
         combocommunity = new javax.swing.JComboBox<>();
         jButton6 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        citytable1 = new javax.swing.JTable();
+        housetable = new javax.swing.JTable();
 
         jButton3.setText("Delete");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -119,22 +122,6 @@ public class HouseFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setForeground(new java.awt.Color(0, 0, 255));
-        jButton4.setText("Update");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-
-        jButton7.setForeground(new java.awt.Color(0, 0, 255));
-        jButton7.setText("Delete");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
         jButton8.setForeground(new java.awt.Color(0, 0, 255));
         jButton8.setText("Save");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +130,7 @@ public class HouseFrame extends javax.swing.JFrame {
             }
         });
 
-        citytable1.setModel(new javax.swing.table.DefaultTableModel(
+        housetable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
                 {null, null},
@@ -154,7 +141,7 @@ public class HouseFrame extends javax.swing.JFrame {
                 "House Id", "House Name"
             }
         ));
-        jScrollPane2.setViewportView(citytable1);
+        jScrollPane2.setViewportView(housetable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -182,15 +169,11 @@ public class HouseFrame extends javax.swing.JFrame {
                         .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(75, 75, 75)
-                                    .addComponent(jButton8)
-                                    .addGap(185, 185, 185)
-                                    .addComponent(jButton4)
-                                    .addGap(150, 150, 150)
-                                    .addComponent(jButton7))))))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(184, 184, 184)
+                        .addComponent(jButton8)
+                        .addGap(139, 139, 139)))
                 .addContainerGap(46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -215,11 +198,7 @@ public class HouseFrame extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(txthname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4)
-                        .addComponent(jButton7))
-                    .addComponent(jButton8))
+                .addComponent(jButton8)
                 .addGap(42, 42, 42)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -238,87 +217,86 @@ public class HouseFrame extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+//
+//        DefaultTableModel tblmodel = (DefaultTableModel) housetable.getModel();
+//        if(citytable.getSelectedRowCount()==1){
+//
+//            String name = txthname.getText();
+//            String empid = txthid.getText();
+//
+//            tblmodel.setValueAt(empid, citytable.getSelectedRow(), 0);
+//            tblmodel.setValueAt(name, citytable.getSelectedRow(), 1);
+//
+//            for(House e : HouseDirectory.getHouseinstance().getCitylist()){
+//
+//                if(e.getCityid().equals(empid)){
+//                    e.setCityname(name);
+//                    e.setCitycode(code);
 
-        DefaultTableModel tblmodel = (DefaultTableModel) citytable.getModel();
-        if(citytable.getSelectedRowCount()==1){
-
-            String name = txthname.getText();
-            String empid = txthid.getText();
-
-            tblmodel.setValueAt(empid, citytable.getSelectedRow(), 0);
-            tblmodel.setValueAt(name, citytable.getSelectedRow(), 1);
-            tblmodel.setValueAt(code, citytable.getSelectedRow(), 2);
-
-            for(House e : HouseDirectory.getHouseinstance().getCitylist()){
-
-                if(e.getCityid().equals(empid)){
-                    e.setCityname(name);
-                    e.setCitycode(code);
-
-                }
-            }
-            JOptionPane.showMessageDialog(this,"Doctor record updated successfully!!.");
-        }
-        else{
-            if(citytable.getRowCount()==0){
-                //if table is empty
-                JOptionPane.showMessageDialog(this,"Table is empty.");
-            }
-            else{
-                //if row is not selected or multiple row are selected
-                JOptionPane.showMessageDialog(this,"Please select a single doctor record to update");
-            }
-
-        }
+//                }
+//            }
+//            JOptionPane.showMessageDialog(this,"Doctor record updated successfully!!.");
+//        }
+//        else{
+//            if(citytable.getRowCount()==0){
+//                //if table is empty
+//                JOptionPane.showMessageDialog(this,"Table is empty.");
+//            }
+//            else{
+//                //if row is not selected or multiple row are selected
+//                JOptionPane.showMessageDialog(this,"Please select a single doctor record to update");
+//            }
+//
+//        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
 
-        int selectedrowindex = citytable.getSelectedRow();
-
-        if (selectedrowindex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-            return;
-        }
-
-        DefaultTableModel model = (DefaultTableModel)citytable.getModel();
-        City selectedemployee = (City) model.getValueAt(selectedrowindex,0);
-        CityDirectory.getCityinstance().deleteCity(selectedemployee);
-
-        JOptionPane.showMessageDialog(this,"Doctor record deleted.");
-
-        populateTable();
+//        int selectedrowindex = citytable.getSelectedRow();
+//
+//        if (selectedrowindex < 0){
+//            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
+//            return;
+//        }
+//
+//        DefaultTableModel model = (DefaultTableModel)citytable.getModel();
+//        City selectedemployee = (City) model.getValueAt(selectedrowindex,0);
+//        CityDirectory.getCityinstance().deleteCity(selectedemployee);
+//
+//        JOptionPane.showMessageDialog(this,"Doctor record deleted.");
+//
+//        populateTable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String name = txtcityname.getText();
-        String id = txtcityid.getText();
-        String code = txtcitycode.getText();
-
-        //Check if all fields are filled or not
-        if(txtcityname.getText().equals("") ||
-            txtcityid.getText().equals("") ||
-            txtcitycode.getText().equals("")){
-
-            JOptionPane.showMessageDialog(this,"Please fill data in all fields!.");
-            return;
-
-        }
-        City c = new City(id,name,code);
-        CityDirectory.getCityinstance().addNewCity(c);
-        //
-        //        c.setCityname(name);
-        //        c.setCityid(id);
-        //        c.setCitycode(code);
-
-        JOptionPane.showMessageDialog(this,"New City added!");
-        // Clear all text fields after adding a city record
-        txtcityname.setText("");
-        txtcityid.setText("");
-        txtcitycode.setText("");
-        populateTable();
+//        String name = txtcityname.getText();
+//        String id = txtcityid.getText();
+//        String code = txtcitycode.getText();
+//
+//        //Check if all fields are filled or not
+//        if(txtcityname.getText().equals("") ||
+//            txtcityid.getText().equals("") ||
+//            txtcitycode.getText().equals("")){
+//
+//            JOptionPane.showMessageDialog(this,"Please fill data in all fields!.");
+//            return;
+//
+//        }
+//        City c = new City(id,name,code);
+//        CityDirectory.getCityinstance().addNewCity(c);
+//        //
+//        //        c.setCityname(name);
+//        //        c.setCityid(id);
+//        //        c.setCitycode(code);
+//
+//        JOptionPane.showMessageDialog(this,"New City added!");
+//        // Clear all text fields after adding a city record
+//        txtcityname.setText("");
+//        txtcityid.setText("");
+//        txtcitycode.setText("");
+//        populateTable();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -327,90 +305,34 @@ public class HouseFrame extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-
-        DefaultTableModel tblmodel = (DefaultTableModel) citytable.getModel();
-        if(citytable.getSelectedRowCount()==1){
-
-            String name = txtcityname.getText();
-            String empid = txtcityid.getText();
-            String code = txtcitycode.getText();
-
-            tblmodel.setValueAt(empid, citytable.getSelectedRow(), 0);
-            tblmodel.setValueAt(name, citytable.getSelectedRow(), 1);
-            tblmodel.setValueAt(code, citytable.getSelectedRow(), 2);
-
-            for(City e : CityDirectory.getCityinstance().getCitylist()){
-
-                if(e.getCityid().equals(empid)){
-                    e.setCityname(name);
-                    e.setCitycode(code);
-
-                }
-            }
-            JOptionPane.showMessageDialog(this,"Doctor record updated successfully!!.");
-        }
-        else{
-            if(citytable.getRowCount()==0){
-                //if table is empty
-                JOptionPane.showMessageDialog(this,"Table is empty.");
-            }
-            else{
-                //if row is not selected or multiple row are selected
-                JOptionPane.showMessageDialog(this,"Please select a single doctor record to update");
-            }
-
-        }
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-
-        int selectedrowindex = citytable.getSelectedRow();
-
-        if (selectedrowindex < 0){
-            JOptionPane.showMessageDialog(this, "Please select a row to delete.");
-            return;
-        }
-
-        DefaultTableModel model = (DefaultTableModel)citytable.getModel();
-        City selectedemployee = (City) model.getValueAt(selectedrowindex,0);
-        CityDirectory.getCityinstance().deleteCity(selectedemployee);
-
-        JOptionPane.showMessageDialog(this,"Doctor record deleted.");
-
-        populateTable();
-    }//GEN-LAST:event_jButton7ActionPerformed
-
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
-        String name = txtcityname.getText();
-        String id = txtcityid.getText();
-        String code = txtcitycode.getText();
-
-        //Check if all fields are filled or not
-        if(txtcityname.getText().equals("") ||
-            txtcityid.getText().equals("") ||
-            txtcitycode.getText().equals("")){
-
-            JOptionPane.showMessageDialog(this,"Please fill data in all fields!.");
-            return;
-
-        }
-        City c = new City(id,name,code);
-        CityDirectory.getCityinstance().addNewCity(c);
+//        String name = txtcityname.getText();
+//        String id = txtcityid.getText();
+//        String code = txtcitycode.getText();
+//
+//        //Check if all fields are filled or not
+//        if(txtcityname.getText().equals("") ||
+//            txtcityid.getText().equals("") ||
+//            txtcitycode.getText().equals("")){
+//
+//            JOptionPane.showMessageDialog(this,"Please fill data in all fields!.");
+//            return;
+//
+//        }
+//        City c = new City(id,name,code);
+//        CityDirectory.getCityinstance().addNewCity(c);
         //
         //        c.setCityname(name);
         //        c.setCityid(id);
         //        c.setCitycode(code);
-
-        JOptionPane.showMessageDialog(this,"New City added!");
-        // Clear all text fields after adding a city record
-        txtcityname.setText("");
-        txtcityid.setText("");
-        txtcitycode.setText("");
-        populateTable();
+//
+//        JOptionPane.showMessageDialog(this,"New City added!");
+//        // Clear all text fields after adding a city record
+//        txtcityname.setText("");
+//        txtcityid.setText("");
+//        txtcitycode.setText("");
+//        populateTable();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
@@ -450,16 +372,14 @@ public class HouseFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable citytable;
-    private javax.swing.JTable citytable1;
     private javax.swing.JComboBox<String> combocity;
     private javax.swing.JComboBox<String> combocommunity;
+    private javax.swing.JTable housetable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -471,4 +391,19 @@ public class HouseFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txthid;
     private javax.swing.JTextField txthname;
     // End of variables declaration//GEN-END:variables
+
+    // End of variables declaration                   
+private void populateTable()
+    {
+        DefaultTableModel model = (DefaultTableModel)housetable.getModel();
+        model.setRowCount(0);
+        for(House p : HouseDirectory.getHouseinstance().getHouselist()){
+            Object[] row = new Object[10];
+            row[0] = p;
+            row[1] = p.getHousename();
+            
+            model.addRow(row);
+        }
+    }
+
 }

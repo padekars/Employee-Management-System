@@ -7,6 +7,8 @@ package UI;
 import javax.swing.table.DefaultTableModel;
 import model.City;
 import model.CityDirectory;
+import model.Doctor;
+import model.DoctorDirectory;
 
 /**
  *
@@ -19,6 +21,7 @@ public class ViewDetails extends javax.swing.JFrame {
      */
     public ViewDetails() {
         initComponents();
+        populateTable();
     }
 
     /**
@@ -32,29 +35,29 @@ public class ViewDetails extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        patienttable = new javax.swing.JTable();
+        doctortable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("View Details");
 
-        patienttable.setModel(new javax.swing.table.DefaultTableModel(
+        doctortable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Patient ID", "Patient Name", "Patient Age", "Patient Bloodgroup"
+                "Doctor ID", "Doctor Name", "Doctor Specialization"
             }
         ));
-        patienttable.addMouseListener(new java.awt.event.MouseAdapter() {
+        doctortable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                patienttableMouseClicked(evt);
+                doctortableMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(patienttable);
+        jScrollPane1.setViewportView(doctortable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -86,23 +89,23 @@ public class ViewDetails extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void patienttableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_patienttableMouseClicked
+    private void doctortableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_doctortableMouseClicked
         // TODO add your handling code here:
 
         // TODO add your handling code here:
-        DefaultTableModel tblmodel = (DefaultTableModel) patienttable.getModel();
+        DefaultTableModel tblmodel = (DefaultTableModel) doctortable.getModel();
 
-        String tblid = tblmodel.getValueAt(patienttable.getSelectedRow(),0).toString();
-        String tblname = tblmodel.getValueAt(patienttable.getSelectedRow(),1).toString();
-        String tblage = tblmodel.getValueAt(patienttable.getSelectedRow(),2).toString();
-        String tblbg = tblmodel.getValueAt(patienttable.getSelectedRow(),3).toString();
+        String tblid = tblmodel.getValueAt(doctortable.getSelectedRow(),0).toString();
+        String tblname = tblmodel.getValueAt(doctortable.getSelectedRow(),1).toString();
+        String tblage = tblmodel.getValueAt(doctortable.getSelectedRow(),2).toString();
+        String tblbg = tblmodel.getValueAt(doctortable.getSelectedRow(),3).toString();
         //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         //String dob = sdf.format(pdob.getDate());
         //String tbldob = tblmodel.getValueAt(jTable1.getSelectedRow(),3).toString();
 
         //dob.setDate(tbldob);
 
-    }//GEN-LAST:event_patienttableMouseClicked
+    }//GEN-LAST:event_doctortableMouseClicked
 
     /**
      * @param args the command line arguments
@@ -140,22 +143,25 @@ public class ViewDetails extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable doctortable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable patienttable;
     // End of variables declaration//GEN-END:variables
 
     private void populateTable()
     {
         DefaultTableModel model = (DefaultTableModel)doctortable.getModel();
         model.setRowCount(0);
-        for(Doctor p : DoctorDirectory.getDoctorinstance().getCitylist()){
+        for(Doctor p : DoctorDirectory.getDoctorinstance().getDoctorlist()){
+            {
+                
             Object[] row = new Object[10];
             row[0] = p;
-            row[1] = p.getCityname();
-            row[2] = p.getCitycode();
+            row[1] = p.getPersonname();
+            row[2] = p.getDspecz();
             
             model.addRow(row);
+            }
         }
     }
 
