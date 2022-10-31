@@ -3,6 +3,8 @@
 ## Medical Resource Finder Application
 
 ###Class Diagram
+<img width="836" alt="Snehal Padekar Class DIagram" src="https://user-images.githubusercontent.com/114442288/198923935-17efe2ca-dd2a-4c1d-a3c5-ea3b3423158e.png">
+
 
 ####Sequence Diagram
 ![SequenceAdmin](https://user-images.githubusercontent.com/114442288/198919133-914bbdee-d526-41ec-96ab-0a7cee6f6a7a.png)
